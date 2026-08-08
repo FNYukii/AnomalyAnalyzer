@@ -1,5 +1,10 @@
-const App = () => {
-  return <h1>Cyber Charts</h1>
-}
+import { SatelliteView } from './components/SatelliteView'
 
-export { App }
+export const App = () => {
+  return (
+    <div>
+      {/* <h1>Cyber Charts</h1> */}
+      <SatelliteView />
+    </div>
+  )
+}

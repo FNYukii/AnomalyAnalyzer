@@ -1,6 +1,6 @@
 import clsx from 'clsx'
-import { SatelliteView } from './components/SatelliteView'
-import { HUD } from './components/HUD'
+import { SatelliteView } from './components/sections/SatelliteView'
+import { HUD } from './components/sections/HUD'
 
 export const App = () => {
   return (

@@ -3,7 +3,11 @@ import satellitePhoto from '../assets/satellite-photo.png'
 import { useRef } from 'react'
 import { AutoScroller } from './AutoScroller'
 
-export const SatelliteView = () => {
+type Props = {
+  className?: string
+}
+
+export const SatelliteView = (props: Props) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   return (
@@ -12,7 +16,7 @@ export const SatelliteView = () => {
 
       <div
         ref={containerRef}
-        className={clsx('w-full h-full', 'overflow-scroll')}
+        className={clsx('', 'overflow-scroll', props.className)}
       >
         <img
           src={satellitePhoto}

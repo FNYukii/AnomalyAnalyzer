@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { TypingText } from '../parts/TypingText'
+import { TypingText } from '../elements/TypingText'
 
 const INITIALIZE_LOG_TEXT = `Inspecter Authenticated
 A.M.I.S ver 1.46.401 loaded

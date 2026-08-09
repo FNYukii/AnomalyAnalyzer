@@ -1,7 +1,7 @@
 import clsx from 'clsx'
-import { SatelliteView } from './components/sections/SatelliteView'
-import { TopLeftHUD } from './components/sections/TopLeftHUD'
-import { TopRightHUD } from './components/sections/TopRightHUD'
+import { SatelliteView } from './components/parts/SatelliteView'
+import { TopLeftHUD } from './components/parts/TopLeftHUD'
+import { TopRightHUD } from './components/parts/TopRightHUD'
 
 export const App = () => {
   return (

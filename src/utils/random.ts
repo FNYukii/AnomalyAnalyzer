@@ -9,14 +9,20 @@ export const getRandomItem = <T>(items: T[]): T => {
 /**
  * 指定した範囲内でランダムな数値を返す
  *
- * - 形式は小数点1位まで
- * - 20, 30と指定すれば 20.0 ~ 29.9 を返す
+ * - optionsで小数点何位まで表示するか指定できる (切り捨て)
+ * - 20, 30, 0と指定すれば 20 ~ 29を返す
+ * - 20, 30, 1と指定すれば 20.0 ~ 29.9 を返す
  */
 export const getRandomNum = (
   min: number,
   max: number,
-  options?: { decimals?: number },
+  options?: { decimals?: 0 | 1 },
 ) => {
   const randomNum = Math.random() * (max - min) + min
-  return Number(randomNum.toFixed(options?.decimals ?? 0))
+
+  if (options?.decimals === 1) {
+    return Math.floor(randomNum * 10) / 10
+  }
+
+  return Math.floor(randomNum)
 }

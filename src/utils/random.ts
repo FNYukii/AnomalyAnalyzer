@@ -12,7 +12,11 @@ export const getRandomItem = <T>(items: T[]): T => {
  * - 形式は小数点1位まで
  * - 20, 30と指定すれば 20.0 ~ 29.9 を返す
  */
-export const getRandomNum = (min: number, max: number) => {
+export const getRandomNum = (
+  min: number,
+  max: number,
+  options?: { decimals?: number },
+) => {
   const randomNum = Math.random() * (max - min) + min
-  return Number(randomNum.toFixed(1))
+  return Number(randomNum.toFixed(options?.decimals ?? 0))
 }

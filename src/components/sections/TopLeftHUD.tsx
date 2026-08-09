@@ -1,7 +1,5 @@
 import clsx from 'clsx'
 import { TypingText } from '../parts/TypingText'
-import dayjs from 'dayjs'
-import { useEffect, useState } from 'react'
 
 const INITIALIZE_LOG_TEXT = `Inspecter Authenticated
 A.M.I.S ver 1.46.401 loaded
@@ -13,7 +11,7 @@ Dynamic waveform chart on
 Search mode Selected
 All systems online`
 
-const LeftHUD = () => {
+export const TopLeftHUD = () => {
   return (
     <div>
       <section className={clsx('leading-[1.2]')}>
@@ -40,48 +38,6 @@ const LeftHUD = () => {
         <TypingText text="Track" startDelay={2400} className="opacity-60" />
         <TypingText text="Command" startDelay={2600} className="opacity-60" />
       </section>
-    </div>
-  )
-}
-
-const ClockSection = () => {
-  const [now, setNow] = useState(dayjs())
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setNow(dayjs())
-    }, 1000)
-
-    return () => clearInterval(intervalId)
-  }, [])
-
-  return (
-    <section className={clsx('flex flex-col items-end', '*:text-2xl')}>
-      <TypingText text={now.format('YYYY-MM-DD dddd')} />
-      <TypingText text={now.format('HH:mm:ss')} startDelay={400} />
-    </section>
-  )
-}
-
-const RightHUD = () => {
-  return (
-    <div>
-      <ClockSection />
-    </div>
-  )
-}
-
-type Props = {
-  className?: string
-}
-
-export const HUD = (props: Props) => {
-  return (
-    <div
-      className={clsx('w-full p-1', 'flex justify-between', props.className)}
-    >
-      <LeftHUD />
-      <RightHUD />
     </div>
   )
 }

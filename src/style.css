@@ -8,3 +8,7 @@
 body {
   font-family: Exo;
 }
+
+*::-webkit-scrollbar {
+  display: none;
+}

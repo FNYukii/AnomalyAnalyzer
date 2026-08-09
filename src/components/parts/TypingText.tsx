@@ -57,6 +57,7 @@ export const TypingText = ({
       <p className={clsx('absolute', className)}>
         {isTyping ? typingText : initialText}
       </p>
+
       <p className={clsx('invisible', className)}>{initialText}</p>
     </div>
   )

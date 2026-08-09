@@ -8,7 +8,7 @@ export const App = () => {
     <div className={clsx('w-screen h-screen')}>
       <SatelliteView className="fixed size-full" />
 
-      <div className={clsx('fixed w-full p-1', 'flex justify-between')}>
+      <div className={clsx('fixed w-full p-2', 'flex justify-between')}>
         <TopLeftHUD />
         <TopRightHUD />
       </div>

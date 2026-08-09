@@ -10,6 +10,12 @@ type Props = {
   className?: string
 }
 
+/**
+ * タイピングアニメーションを再生しながら文字列を表示する
+ *
+ * - アニメーション中も最終的な表示領域が確保される
+ * - アニメーションはマウント時しか再生されない。textが更新された場合はアニメーション無しで置き換えられる
+ */
 export const TypingText = ({
   text: initialText,
   startDelay = 0,
@@ -17,6 +23,7 @@ export const TypingText = ({
   className,
 }: Props) => {
   const [typingText, setTypingText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
 
   useEffect(() => {
     // props.textが更新されたら、表示をリセット
@@ -32,6 +39,7 @@ export const TypingText = ({
           }
 
           clearInterval(intervalId)
+          setIsTyping(false)
           return prevText
         })
       }, intervalDelay)
@@ -42,7 +50,14 @@ export const TypingText = ({
       clearTimeout(timeoutId)
       clearInterval(intervalId)
     }
-  }, [initialText])
+  }, [])
 
-  return <p className={clsx('whitespace-pre', className)}>{typingText}</p>
+  return (
+    <div className="relative *:whitespace-pre">
+      <p className={clsx('absolute', className)}>
+        {isTyping ? typingText : initialText}
+      </p>
+      <p className={clsx('invisible', className)}>{initialText}</p>
+    </div>
+  )
 }

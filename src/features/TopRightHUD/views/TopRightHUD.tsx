@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 import dayjs from 'dayjs'
 import { useState, useEffect } from 'react'
-import { TypingText } from '../elements/TypingText'
-import { getRandomItem, getRandomNum } from '../../utils/random'
-import { CountingUpText } from '../elements/CountingUpText'
+import { TypingText } from '../../misc/elements/TypingText'
 import { CountingUpSlider } from '../elements/CountingUpSlider'
+import { CountingUpText } from '../elements/CountingUpText'
+import { getRandomItem, getRandomNum } from '../utils/random'
 
 const WEATHERS = [
   'clear',

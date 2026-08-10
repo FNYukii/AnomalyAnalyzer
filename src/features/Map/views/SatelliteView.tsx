@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import satellitePhoto from '../../assets/satellite-photo.png'
+import satellitePhoto from '../assets/satellite-photo.png'
 import { useRef } from 'react'
 import { AutoScroller } from '../elements/AutoScroller'
 

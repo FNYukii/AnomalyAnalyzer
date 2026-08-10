@@ -5,6 +5,10 @@
   --color-primary: var(--color-sky-500);
 }
 
+html {
+  @apply overscroll-none;
+}
+
 body {
   font-family: Exo;
 }

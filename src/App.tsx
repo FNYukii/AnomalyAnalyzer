@@ -5,7 +5,12 @@ import { TopRightHUD } from './features/TopRightHUD/views/TopRightHUD'
 
 export const App = () => {
   return (
-    <div className={clsx('w-screen h-screen')}>
+    <div
+      className={clsx(
+        'w-screen h-screen',
+        'text-primary selection:bg-primary/30 uppercase',
+      )}
+    >
       <SatelliteView className="fixed size-full" />
 
       <div className={clsx('fixed w-full p-2', 'flex justify-between')}>

@@ -16,7 +16,7 @@ export const SatelliteView = (props: Props) => {
 
       <div
         ref={containerRef}
-        className={clsx('', 'overflow-scroll', props.className)}
+        className={clsx('overflow-scroll scrollbar-none', props.className)}
       >
         <img
           src={satellitePhoto}

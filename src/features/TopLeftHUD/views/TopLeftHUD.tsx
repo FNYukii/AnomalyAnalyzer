@@ -31,7 +31,7 @@ export const TopLeftHUD = () => {
         />
       </section>
 
-      <section className="mt-8">
+      <section className="mt-8 *:leading-[1.2]">
         <TypingText text="Search ◀︎" startDelay={2200} />
 
         <TypingText text="Analyze" startDelay={2000} className="opacity-60" />

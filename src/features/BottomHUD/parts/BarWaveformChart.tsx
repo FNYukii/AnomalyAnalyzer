@@ -87,5 +87,10 @@ export const BarWaveformChart = () => {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="size-full" />
+  return (
+    // NOTE: canvasと高さ計算によってaspect-videoが広げられる不具合があったので、relativeで対策
+    <div className="relative size-full">
+      <canvas ref={canvasRef} className="absolute inset-0 size-full" />
+    </div>
+  )
 }

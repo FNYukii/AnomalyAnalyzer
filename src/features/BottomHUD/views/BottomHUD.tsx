@@ -3,12 +3,15 @@ import { BarWaveformChart } from '../parts/BarWaveformChart'
 
 export const BottomHUD = () => {
   return (
-    <div className="h-full flex">
+    <div className={clsx('h-full w-fit', 'grid grid-rows-2 gap-4')}>
       <section
-        className={clsx(
-          'h-full aspect-video',
-          'border border-primary bg-primary/10',
-        )}
+        className={clsx('aspect-video', 'border border-primary bg-primary/10')}
+      >
+        <BarWaveformChart />
+      </section>
+
+      <section
+        className={clsx('aspect-video', 'border border-primary bg-primary/10')}
       >
         <BarWaveformChart />
       </section>

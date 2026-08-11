@@ -5,6 +5,7 @@ const getRandomNum = (min: number, max: number) => {
   return Math.floor(randomNum * 100) / 100
 }
 
+const COLOR = '#0ea5e9' // 波形の色
 const SPEED = 0.6 // 流れるスピード（px/frame）
 const BAR_WIDTH = 1.5 // 各バーの幅（px）
 const BAR_GAP = 1 // バー同士の間隔（px）
@@ -70,7 +71,7 @@ export const BarWaveformChart = () => {
         const centerY = canvas.height / 2
         const y = centerY - barHeight / 2
 
-        ctx.fillStyle = '#0ea5e9'
+        ctx.fillStyle = COLOR
         ctx.fillRect(x, y, BAR_WIDTH, barHeight)
       }
 

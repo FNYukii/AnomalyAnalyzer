@@ -21,5 +21,3 @@ export const AREA_TYPES = [
   'city',
   'G',
 ] as const
-
-export const CHART_TYPES = ['barWaveform', 'line', 'scatter'] as const

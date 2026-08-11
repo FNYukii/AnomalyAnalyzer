@@ -3,6 +3,7 @@ import { SatelliteView } from './features/Map/views/SatelliteView'
 import { TopLeftHUD } from './features/TopLeftHUD/views/TopLeftHUD'
 import { TopRightHUD } from './features/TopRightHUD/views/TopRightHUD'
 import { BottomLeftHUD } from './features/BottomLeftHUD/views/BottomLeftHUD'
+import { BottomRightHUD } from './features/BottomRightHUD/views/BottomRightHUD'
 
 export const App = () => {
   return (
@@ -25,7 +26,10 @@ export const App = () => {
           <TopRightHUD />
         </div>
 
-        <BottomLeftHUD />
+        <div className="flex justify-between">
+          <BottomLeftHUD />
+          <BottomRightHUD />
+        </div>
       </div>
     </div>
   )

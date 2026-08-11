@@ -70,17 +70,26 @@ const LevelSection = () => {
         <DisplayDelay delay={1000}>
           <TypingText
             text={`Alert\nlevel`}
-            className="leading-none text-left text-2xl"
+            className={clsx(
+              'leading-none text-left text-2xl',
+              level === 7 && 'text-accent',
+            )}
           />
         </DisplayDelay>
 
         <DisplayDelay delay={1400}>
-          <CountingUpText num={level} className="mt-2 text-6xl h-13" />
+          <CountingUpText
+            num={level}
+            className={clsx('mt-2 text-6xl h-13', level === 7 && 'text-accent')}
+          />
         </DisplayDelay>
       </div>
 
       <DisplayDelay delay={1400}>
-        <CountingUpSlider rate={(level / MAX_AREA_LEVEL) * 100} />
+        <CountingUpSlider
+          percentage={(level / MAX_AREA_LEVEL) * 100}
+          color={level === 7 ? 'accent' : 'primary'}
+        />
       </DisplayDelay>
     </section>
   )

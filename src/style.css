@@ -3,6 +3,7 @@
 
 @theme {
   --color-primary: var(--color-sky-500);
+  --color-accent: var(--color-pink-500);
 }
 
 /* ページのスクロール無効化 */

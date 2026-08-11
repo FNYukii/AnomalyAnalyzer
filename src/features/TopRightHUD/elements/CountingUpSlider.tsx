@@ -4,12 +4,14 @@ import { Slider } from './Slider'
 const DEFAULT_INTERVAL_DELAY = 80
 
 type Props = {
-  rate: number
+  percentage: number
+  color?: 'primary' | 'accent'
   intervalDelay?: number
 }
 
 export const CountingUpSlider = ({
-  rate: initialRate,
+  percentage: initialPercentage,
+  color = 'primary',
   intervalDelay = DEFAULT_INTERVAL_DELAY,
 }: Props) => {
   const [countingUpRate, setCountingUpRate] = useState(0)
@@ -22,12 +24,12 @@ export const CountingUpSlider = ({
 
     intervalId = setInterval(() => {
       setCountingUpRate((prevNum) => {
-        if (prevNum < initialRate) {
+        if (prevNum < initialPercentage) {
           return prevNum + 5
         }
 
         clearInterval(intervalId)
-        return initialRate
+        return initialPercentage
       })
     }, intervalDelay)
 
@@ -39,8 +41,8 @@ export const CountingUpSlider = ({
 
   return (
     <div className="relative">
-      <Slider value={countingUpRate} className="absolute" />
-      <Slider value={0} className="invisible" />
+      <Slider percentage={countingUpRate} color={color} className="absolute" />
+      <Slider percentage={0} className="invisible" />
     </div>
   )
 }

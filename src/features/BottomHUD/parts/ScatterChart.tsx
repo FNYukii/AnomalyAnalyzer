@@ -33,7 +33,7 @@ const makeCoordinateRecords = (): Record[] => {
 /**
  * 散布図
  *
- * アノマリーエリアにおけるアノマリーの数や位置関係をランダム生成し、表示する
+ * アノマリーエリアにおける各アノマリーの座標,大きさをランダム生成し、表示する
  */
 export const ScatterChart = () => {
   const [data, setData] = useState(makeCoordinateRecords())

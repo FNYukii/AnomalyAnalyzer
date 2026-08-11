@@ -3,10 +3,10 @@ import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { FadeIn } from '../../misc/elements/FadeIn'
 import { pickRandomItem } from '../../misc/utils/array'
 import { makeRandomNum } from '../../misc/utils/number'
-import { RadarChart } from '../parts/RadarChart'
 import { AREA_TYPES } from '../../misc/constants'
+import { PieChart } from '../parts/PieChart'
 
-const CHART_TYPES = ['radar'] as const
+const CHART_TYPES = ['pie'] as const
 
 const makeAreaName = (): string => {
   const areaType = pickRandomItem(AREA_TYPES)
@@ -31,12 +31,12 @@ const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
 
           <div
             className={clsx(
-              'aspect-video',
+              'aspect-square',
               'border border-primary/50 bg-primary/15',
               'corner-border corner-border-primary',
             )}
           >
-            {chartType === 'radar' && <RadarChart />}
+            {chartType === 'pie' && <PieChart />}
           </div>
         </section>
       </FadeIn>

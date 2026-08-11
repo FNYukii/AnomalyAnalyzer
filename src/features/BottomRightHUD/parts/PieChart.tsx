@@ -27,7 +27,19 @@ export const PieChart = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setData(makePercentageRecords())
+      setData((prev) => {
+        // 値を更新する要素をランダム決定
+        const index = makeRandomNum(0, data.length)
+
+        // その要素の値だけ多少変化させる
+        const newData = structuredClone(prev)
+        newData[index] = {
+          ...newData[index],
+          value: newData[index].value + makeRandomNum(-30, 31),
+        }
+
+        return newData
+      })
     }, 5000)
 
     return () => {

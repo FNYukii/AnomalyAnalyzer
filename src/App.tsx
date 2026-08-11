@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { SatelliteView } from './features/Map/views/SatelliteView'
 import { TopLeftHUD } from './features/TopLeftHUD/views/TopLeftHUD'
 import { TopRightHUD } from './features/TopRightHUD/views/TopRightHUD'
-import { BottomHUD } from './features/BottomHUD/views/BottomHUD'
+import { BottomLeftHUD } from './features/BottomLeftHUD/views/BottomLeftHUD'
 
 export const App = () => {
   return (
@@ -25,7 +25,7 @@ export const App = () => {
           <TopRightHUD />
         </div>
 
-        <BottomHUD />
+        <BottomLeftHUD />
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { BarWaveformChart } from '../parts/BarWaveformChart'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
-import { FadeIn } from '../elements/FadeIn'
+import { FadeIn } from '../../misc/elements/FadeIn'
 import { LineChart } from '../parts/LineChart'
 import { ScatterChart } from '../parts/ScatterChart'
 import { makeRandomNum } from '../../misc/utils/number'
@@ -46,7 +46,7 @@ const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
   )
 }
 
-export const BottomHUD = () => {
+export const BottomLeftHUD = () => {
   return (
     <div
       className={clsx(

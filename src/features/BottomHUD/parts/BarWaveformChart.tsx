@@ -1,9 +1,5 @@
 import { useEffect, useRef } from 'react'
-
-const getRandomNum = (min: number, max: number) => {
-  const randomNum = Math.random() * (max - min) + min
-  return Math.floor(randomNum * 100) / 100
-}
+import { makeRandomNum } from '../../misc/utils/number'
 
 const COLOR = '#0ea5e9' // 波形の色
 const SPEED = 0.6 // 流れるスピード（px/frame）
@@ -39,7 +35,7 @@ export const BarWaveformChart = () => {
 
     // 振幅データ
     const amplitudes: number[] = Array.from({ length: maxBarCount }, () =>
-      getRandomNum(0.05, 0.2),
+      makeRandomNum(0.05, 0.2, 2),
     )
 
     let frameId: number
@@ -58,10 +54,10 @@ export const BarWaveformChart = () => {
         amplitudes.shift()
 
         // 新しい振幅を生成
-        const isSpike = getRandomNum(0, 10) > 9
+        const isSpike = makeRandomNum(0, 10) === 9
         const newAmplitude = isSpike
-          ? getRandomNum(0.2, 1)
-          : getRandomNum(0.05, 0.2)
+          ? makeRandomNum(0.2, 1, 2)
+          : makeRandomNum(0.05, 0.2, 2)
 
         amplitudes.push(newAmplitude)
       }

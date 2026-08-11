@@ -6,15 +6,11 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
+import { makeRandomNum } from '../../misc/utils/number'
 
 type Record = {
   hour: number
   concentration: number
-}
-
-const getRandomNum = (min: number, max: number) => {
-  const randomNum = Math.random() * (max - min) + min
-  return Math.floor(randomNum * 100) / 100
 }
 
 const makeConcentrationRecords = (): Record[] => {
@@ -32,7 +28,8 @@ const makeConcentrationRecords = (): Record[] => {
   hours.forEach((hour) => {
     records.push({
       hour,
-      concentration: (records.at(-1)?.concentration ?? 0) + getRandomNum(1, 30),
+      concentration:
+        (records.at(-1)?.concentration ?? 0) + makeRandomNum(1, 30),
     })
   })
 

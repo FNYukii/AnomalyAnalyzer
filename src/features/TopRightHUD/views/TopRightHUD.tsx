@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import { TypingText } from '../../misc/elements/TypingText'
 import { CountingUpSlider } from '../elements/CountingUpSlider'
 import { CountingUpText } from '../elements/CountingUpText'
-import { getRandomItem, getRandomNum } from '../utils/random'
+import { getRandomItem } from '../../misc/utils/array'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
+import { makeRandomNum } from '../../misc/utils/number'
 
 const WEATHERS = [
   'clear',
@@ -44,8 +45,8 @@ const ClockSection = () => {
 
 const WeatherSection = () => {
   const weather = getRandomItem(WEATHERS)
-  const temperature = getRandomNum(10, 40, { decimals: 1 })
-  const humidity = getRandomNum(30, 70, { decimals: 1 })
+  const temperature = makeRandomNum(10, 40, 1)
+  const humidity = makeRandomNum(30, 70, 1)
 
   return (
     <section className="mt-1">
@@ -60,7 +61,7 @@ const WeatherSection = () => {
 }
 
 const LevelSection = () => {
-  const level = getRandomNum(1, MAX_AREA_LEVEL + 1)
+  const level = makeRandomNum(1, MAX_AREA_LEVEL + 1)
 
   return (
     <section className="mt-8 mr-4 flex gap-3">

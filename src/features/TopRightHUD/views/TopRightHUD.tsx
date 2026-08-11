@@ -24,6 +24,7 @@ const MAX_AREA_LEVEL = 7
 const ClockSection = () => {
   const [now, setNow] = useState(dayjs())
 
+  // now を毎秒更新
   useEffect(() => {
     const intervalId = setInterval(() => {
       setNow(dayjs())

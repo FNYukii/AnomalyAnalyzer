@@ -5,7 +5,7 @@ import { TypingText } from '../../misc/elements/TypingText'
 import { CountingUpSlider } from '../elements/CountingUpSlider'
 import { CountingUpText } from '../elements/CountingUpText'
 import { getRandomItem, getRandomNum } from '../utils/random'
-import { DisplayDelay } from '../../BottomHUD/elements/DisplayDelay'
+import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 
 const WEATHERS = [
   'clear',

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { TypingText } from '../../misc/elements/TypingText'
-import { DisplayDelay } from '../../BottomHUD/elements/DisplayDelay'
+import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 
 const INITIALIZE_LOG_TEXT = `Inspecter Authenticated
 A.M.I.S ver 1.46.401 loaded

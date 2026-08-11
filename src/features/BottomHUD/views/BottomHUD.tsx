@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { BarWaveformChart } from '../parts/BarWaveformChart'
-import { DisplayDelay } from '../elements/DisplayDelay'
+import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 
 export const BottomHUD = () => {
   return (

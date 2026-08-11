@@ -6,7 +6,6 @@ const DEFAULT_INTERVAL_DELAY = 80
 type Props = {
   rate: number
   intervalDelay?: number
-  className?: string
 }
 
 export const CountingUpSlider = ({

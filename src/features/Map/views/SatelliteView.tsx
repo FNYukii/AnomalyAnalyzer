@@ -7,7 +7,7 @@ type Props = {
   className?: string
 }
 
-export const SatelliteView = (props: Props) => {
+export const SatelliteView = ({ className }: Props) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   return (
@@ -16,7 +16,7 @@ export const SatelliteView = (props: Props) => {
 
       <div
         ref={containerRef}
-        className={clsx('overflow-scroll scrollbar-none', props.className)}
+        className={clsx('overflow-scroll scrollbar-none', className)}
       >
         <img
           src={satellitePhoto}

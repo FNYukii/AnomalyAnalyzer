@@ -21,11 +21,11 @@ type Props = {
  *  <p>.........</p>
  * </div>
  */
-export const AutoScroller = (props: Props) => {
+export const AutoScroller = ({ containerRef }: Props) => {
   const scrollRef = useRef<number | null>(null)
 
   useEffect(() => {
-    const container = props.containerRef.current
+    const container = containerRef.current
     if (container) {
       container.tabIndex = -1
       container.style.pointerEvents = 'none'
@@ -39,7 +39,7 @@ export const AutoScroller = (props: Props) => {
   }, [])
 
   const scroll = () => {
-    const container = props.containerRef.current
+    const container = containerRef.current
     if (!container) return
 
     container.scrollTop += 0.25

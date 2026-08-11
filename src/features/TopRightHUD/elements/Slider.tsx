@@ -5,9 +5,9 @@ type Props = {
   className?: string
 }
 
-export const Slider = (props: Props) => {
+export const Slider = ({ value, className }: Props) => {
   // 割合を0〜100%の範囲内に安全に収める
-  const clampedValue = Math.min(100, Math.max(0, props.value))
+  const clampedValue = Math.min(100, Math.max(0, value))
 
   return (
     <div
@@ -15,7 +15,7 @@ export const Slider = (props: Props) => {
         'w-3 h-full',
         'flex flex-col justify-end',
         'bg-primary/20 border-y-2 border-primary',
-        props.className,
+        className,
       )}
     >
       <div

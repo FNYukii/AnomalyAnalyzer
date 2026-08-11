@@ -5,13 +5,13 @@ type Props = {
   delay: number
 }
 
-export const DisplayDelay = (props: Props) => {
+export const DisplayDelay = ({ children, delay }: Props) => {
   const [isShow, setIsShow] = useState(false)
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsShow(true)
-    }, props.delay)
+    }, delay)
 
     return () => {
       clearTimeout(timeoutId)
@@ -21,9 +21,9 @@ export const DisplayDelay = (props: Props) => {
   return (
     <>
       {!isShow ? (
-        <div className={!isShow && 'invisible'}>{props.children}</div>
+        <div className={!isShow && 'invisible'}>{children}</div>
       ) : (
-        props.children
+        children
       )}
     </>
   )

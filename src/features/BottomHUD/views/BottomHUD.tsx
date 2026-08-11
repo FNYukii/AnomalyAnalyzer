@@ -3,10 +3,11 @@ import { BarWaveformChart } from '../parts/BarWaveformChart'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { FadeIn } from '../elements/FadeIn'
 import { LineChart } from '../parts/LineChart'
+import { ScatterChart } from '../parts/ScatterChart'
 
 type ChartSectionProps = {
   title: string
-  variant: 'barWaveform' | 'line'
+  variant: 'barWaveform' | 'line' | 'scatter'
   displayDelay?: number
   className?: string
 }
@@ -32,6 +33,7 @@ const ChartSection = ({
           >
             {variant === 'barWaveform' && <BarWaveformChart />}
             {variant === 'line' && <LineChart />}
+            {variant === 'scatter' && <ScatterChart />}
           </div>
         </section>
       </FadeIn>
@@ -51,7 +53,7 @@ export const BottomHUD = () => {
 
       <ChartSection
         title="Plant 26"
-        variant="barWaveform"
+        variant="scatter"
         displayDelay={3200}
         className="col-start-1"
       />

@@ -11,8 +11,7 @@ INIT - Anomalium Concentrarion Measurement ACTIVATED
 MODE - Real-time Mapping ON
 MODE - Real-time Chart ON
 MODE - Search Mode SELECTED
-STAT - ALL SYSTEMS ONLINE
-`
+STAT - ALL SYSTEMS ONLINE`
 
 const makeRandom4NumberStr = (): string => {
   const randomNum = makeRandomNum(1, 10000)
@@ -30,18 +29,15 @@ export const TopLeftHUD = () => {
       </section>
 
       <section className="mt-8">
-        <DisplayDelay delay={1400}>
+        <DisplayDelay delay={1800}>
           <TypingText
             text={`Session Id\n${sessionId}`}
-            className="leading-[1.2]"
+            className="leading-[1.2] mb-2"
           />
         </DisplayDelay>
 
-        <DisplayDelay delay={1800}>
-          <TypingText
-            text={`User Id\n${userId}`}
-            className="mt-2 leading-[1.2]"
-          />
+        <DisplayDelay delay={2000}>
+          <TypingText text={`User Id\n${userId}`} className="leading-[1.2]" />
         </DisplayDelay>
       </section>
 

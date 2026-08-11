@@ -27,7 +27,7 @@ const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
     <DisplayDelay delay={displayDelay ?? 0}>
       <FadeIn>
         <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
-          <span>{areaName}</span>
+          <span className="text-sm">{areaName}</span>
 
           <div
             className={clsx(

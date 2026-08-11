@@ -69,7 +69,7 @@ const LevelSection = () => {
       <div className="flex flex-col items-end">
         <DisplayDelay delay={1000}>
           <TypingText
-            text={`Area\nlevel`}
+            text={`Alert\nlevel`}
             className="leading-none text-left text-2xl"
           />
         </DisplayDelay>

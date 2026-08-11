@@ -4,25 +4,30 @@ import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { FadeIn } from '../elements/FadeIn'
 import { LineChart } from '../parts/LineChart'
 import { ScatterChart } from '../parts/ScatterChart'
+import { makeRandomNum } from '../../misc/utils/number'
+import { pickRandomItem } from '../../misc/utils/array'
+import { AREA_TYPES, CHART_TYPES } from '../constants'
+
+const makeAreaName = (): string => {
+  const areaType = pickRandomItem(AREA_TYPES)
+  const areaNumber = makeRandomNum(1, 100)
+  return `${areaType} ${areaNumber}`
+}
 
 type ChartSectionProps = {
-  title: string
-  variant: 'barWaveform' | 'line' | 'scatter'
   displayDelay?: number
   className?: string
 }
 
-const ChartSection = ({
-  title,
-  variant,
-  displayDelay,
-  className,
-}: ChartSectionProps) => {
+const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
+  const areaName = makeAreaName()
+  const chartType = pickRandomItem(CHART_TYPES)
+
   return (
     <DisplayDelay delay={displayDelay ?? 0}>
       <FadeIn>
         <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
-          <span>{title}</span>
+          <span>{areaName}</span>
 
           <div
             className={clsx(
@@ -31,9 +36,9 @@ const ChartSection = ({
               'corner-border corner-border-primary',
             )}
           >
-            {variant === 'barWaveform' && <BarWaveformChart />}
-            {variant === 'line' && <LineChart />}
-            {variant === 'scatter' && <ScatterChart />}
+            {chartType === 'barWaveform' && <BarWaveformChart />}
+            {chartType === 'line' && <LineChart />}
+            {chartType === 'scatter' && <ScatterChart />}
           </div>
         </section>
       </FadeIn>
@@ -49,16 +54,9 @@ export const BottomHUD = () => {
         'grid grid-rows-2 grid-cols-2 gap-y-2 gap-x-3',
       )}
     >
-      <ChartSection title="Silo 4" variant="barWaveform" displayDelay={3000} />
-
-      <ChartSection
-        title="Plant 26"
-        variant="scatter"
-        displayDelay={3200}
-        className="col-start-1"
-      />
-
-      <ChartSection title="District 57" variant="line" displayDelay={3400} />
+      <ChartSection displayDelay={3000} />
+      <ChartSection displayDelay={3200} className="col-start-1" />
+      <ChartSection displayDelay={3400} />
     </div>
   )
 }

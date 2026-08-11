@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { TypingText } from '../../misc/elements/TypingText'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
+import { makeRandomNum } from '../../misc/utils/number'
 
 const INITIALIZE_LOG_TEXT = `Inspecter Authenticated
 A.M.I.S ver 1.46.401 loaded
@@ -12,7 +13,15 @@ Dynamic waveform chart on
 Search mode Selected
 All systems online`
 
+const makeRandom4NumberStr = (): string => {
+  const randomNum = makeRandomNum(1, 10000)
+  return String(randomNum).padStart(4, '0')
+}
+
 export const TopLeftHUD = () => {
+  const sessionId = `${makeRandom4NumberStr()}-${makeRandom4NumberStr()}-${makeRandom4NumberStr()}-${makeRandom4NumberStr()}`
+  const userId = `${makeRandom4NumberStr()}-${makeRandom4NumberStr()}`
+
   return (
     <div>
       <section className={clsx('leading-[1.2]')}>
@@ -22,14 +31,14 @@ export const TopLeftHUD = () => {
       <section className="mt-8">
         <DisplayDelay delay={1400}>
           <TypingText
-            text={'Session Id\n4092-8891-6791-5798-5014'}
+            text={`Session Id\n${sessionId}`}
             className="leading-[1.2]"
           />
         </DisplayDelay>
 
         <DisplayDelay delay={1800}>
           <TypingText
-            text={'User Id\n8017-1469'}
+            text={`User Id\n${userId}`}
             className="mt-2 leading-[1.2]"
           />
         </DisplayDelay>

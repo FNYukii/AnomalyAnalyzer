@@ -1,0 +1,25 @@
+export const AREA_TYPES = [
+  'house',
+  'scrool',
+  'hall',
+  'hotel',
+  'silo',
+  'plant',
+  'warehouse',
+  'factory',
+  'station',
+  'road',
+  'bridge',
+  'highway',
+  'railway',
+  'base',
+  'building',
+  'site',
+  'area,',
+  'zone',
+  'district',
+  'city',
+  'G',
+] as const
+
+export const CHART_TYPES = ['line', 'scatter', 'barWaveform'] as const

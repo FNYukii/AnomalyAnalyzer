@@ -14,22 +14,17 @@ type Record = {
 }
 
 const makeConcentrationRecords = (): Record[] => {
-  const RECORDS_LENGTH = 6
-
-  const endHour = dayjs().hour()
-  const startHour = endHour - (RECORDS_LENGTH - 1)
-
-  const hours: number[] = []
-  for (let i = startHour; i <= endHour; i++) {
-    hours.push(i)
-  }
-
+  const HOUR_OFFSETS = [5, 4, 3, 2, 1, 0]
   const records: Record[] = []
-  hours.forEach((hour) => {
+
+  HOUR_OFFSETS.forEach((hourOffset) => {
+    const hour = dayjs().add(-hourOffset, 'hour').hour()
+    const concentration =
+      (records.at(-1)?.concentration ?? 0) + makeRandomNum(1, 15)
+
     records.push({
       hour,
-      concentration:
-        (records.at(-1)?.concentration ?? 0) + makeRandomNum(1, 15),
+      concentration,
     })
   })
 

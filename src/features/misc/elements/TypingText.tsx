@@ -5,7 +5,6 @@ const DEFAULT_INTERVAL_DELAY = 20
 
 type Props = {
   text: string
-  startDelay?: number
   intervalDelay?: number
   className?: string
 }
@@ -18,12 +17,10 @@ type Props = {
  */
 export const TypingText = ({
   text: initialText,
-  startDelay = 0,
   intervalDelay = DEFAULT_INTERVAL_DELAY,
   className,
 }: Props) => {
   const [typingText, setTypingText] = useState('')
-  const [isTyping, setIsTyping] = useState(true)
 
   useEffect(() => {
     // props.textが更新されたら、表示をリセット
@@ -31,33 +28,26 @@ export const TypingText = ({
 
     let intervalId: number
 
-    const timeoutId = setTimeout(() => {
-      intervalId = setInterval(() => {
-        setTypingText((prevText) => {
-          if (prevText.length < initialText.length) {
-            return prevText + initialText[prevText.length]
-          }
+    intervalId = setInterval(() => {
+      setTypingText((prevText) => {
+        if (prevText.length < initialText.length) {
+          return prevText + initialText[prevText.length]
+        }
 
-          clearInterval(intervalId)
-          setIsTyping(false)
-          return prevText
-        })
-      }, intervalDelay)
-    }, startDelay)
+        clearInterval(intervalId)
+        return prevText
+      })
+    }, intervalDelay)
 
     // アンマウント時/再実行時にタイマーを停止
     return () => {
-      clearTimeout(timeoutId)
       clearInterval(intervalId)
     }
   }, [])
 
   return (
     <div className="relative *:whitespace-pre">
-      <p className={clsx('absolute', className)}>
-        {isTyping ? typingText : initialText}
-      </p>
-
+      <p className={clsx('absolute', className)}>{typingText}</p>
       <p className={clsx('invisible', className)}>{initialText}</p>
     </div>
   )

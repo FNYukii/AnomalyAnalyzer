@@ -5,6 +5,7 @@ import { TypingText } from '../../misc/elements/TypingText'
 import { CountingUpSlider } from '../elements/CountingUpSlider'
 import { CountingUpText } from '../elements/CountingUpText'
 import { getRandomItem, getRandomNum } from '../utils/random'
+import { DisplayDelay } from '../../BottomHUD/elements/DisplayDelay'
 
 const WEATHERS = [
   'clear',
@@ -33,7 +34,10 @@ const ClockSection = () => {
   return (
     <section className={clsx('flex flex-col items-end', '*:text-3xl')}>
       <TypingText text={now.format('YYYY-MM-DD dddd')} />
-      <TypingText text={now.format('HH:mm:ss')} startDelay={400} />
+
+      <DisplayDelay delay={400}>
+        <TypingText text={now.format('HH:mm:ss')} />
+      </DisplayDelay>
     </section>
   )
 }
@@ -45,11 +49,12 @@ const WeatherSection = () => {
 
   return (
     <section className="mt-1">
-      <TypingText
-        text={`${weather} | ${temperature}℃ | ${humidity}%`}
-        startDelay={600}
-        className="text-xl"
-      />
+      <DisplayDelay delay={600}>
+        <TypingText
+          text={`${weather} | ${temperature}℃ | ${humidity}%`}
+          className="text-xl"
+        />
+      </DisplayDelay>
     </section>
   )
 }
@@ -60,23 +65,21 @@ const LevelSection = () => {
   return (
     <section className="mt-8 mr-4 flex gap-3">
       <div className="flex flex-col items-end">
-        <TypingText
-          text={`Area\nlevel`}
-          startDelay={1000}
-          className="leading-none text-left text-2xl"
-        />
+        <DisplayDelay delay={1000}>
+          <TypingText
+            text={`Area\nlevel`}
+            className="leading-none text-left text-2xl"
+          />
+        </DisplayDelay>
 
-        <CountingUpText
-          num={level}
-          startDelay={1400}
-          className="mt-2 text-6xl h-13"
-        />
+        <DisplayDelay delay={1400}>
+          <CountingUpText num={level} className="mt-2 text-6xl h-13" />
+        </DisplayDelay>
       </div>
 
-      <CountingUpSlider
-        rate={(level / MAX_AREA_LEVEL) * 100}
-        startDelay={1400}
-      />
+      <DisplayDelay delay={1400}>
+        <CountingUpSlider rate={(level / MAX_AREA_LEVEL) * 100} />
+      </DisplayDelay>
     </section>
   )
 }

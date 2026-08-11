@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { TypingText } from '../../misc/elements/TypingText'
+import { DisplayDelay } from '../../BottomHUD/elements/DisplayDelay'
 
 const INITIALIZE_LOG_TEXT = `Inspecter Authenticated
 A.M.I.S ver 1.46.401 loaded
@@ -19,24 +20,37 @@ export const TopLeftHUD = () => {
       </section>
 
       <section className="mt-8">
-        <TypingText
-          text={'Session Id\n4092-8891-6791-5798-5014'}
-          startDelay={1400}
-          className="leading-[1.2]"
-        />
-        <TypingText
-          text={'User Id\n8017-1469'}
-          startDelay={1800}
-          className="mt-2 leading-[1.2]"
-        />
+        <DisplayDelay delay={1400}>
+          <TypingText
+            text={'Session Id\n4092-8891-6791-5798-5014'}
+            className="leading-[1.2]"
+          />
+        </DisplayDelay>
+
+        <DisplayDelay delay={1800}>
+          <TypingText
+            text={'User Id\n8017-1469'}
+            className="mt-2 leading-[1.2]"
+          />
+        </DisplayDelay>
       </section>
 
       <section className="mt-8 *:leading-[1.2]">
-        <TypingText text="Search ◀︎" startDelay={2200} />
+        <DisplayDelay delay={2200}>
+          <TypingText text="Search ◀︎" />
+        </DisplayDelay>
 
-        <TypingText text="Analyze" startDelay={2000} className="opacity-60" />
-        <TypingText text="Track" startDelay={2400} className="opacity-60" />
-        <TypingText text="Command" startDelay={2600} className="opacity-60" />
+        <DisplayDelay delay={2400}>
+          <TypingText text="Analyze" className="opacity-60" />
+        </DisplayDelay>
+
+        <DisplayDelay delay={2600}>
+          <TypingText text="Track" className="opacity-60" />
+        </DisplayDelay>
+
+        <DisplayDelay delay={2800}>
+          <TypingText text="Command" className="opacity-60" />
+        </DisplayDelay>
       </section>
     </div>
   )

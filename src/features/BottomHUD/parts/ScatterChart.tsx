@@ -68,19 +68,19 @@ export const ScatterChart = () => {
   }, [])
 
   return (
-    <ResponsiveContainer className="p-1">
+    <ResponsiveContainer>
       <RCScatterChart>
         <XAxis
           dataKey="x"
           type="number"
-          domain={[0, 10]}
+          domain={[-1, 11]}
           width={0}
           height={0}
         />
         <YAxis
           dataKey="y"
           type="number"
-          domain={[0, 10]}
+          domain={[-1, 11]}
           width={0}
           height={0}
         />

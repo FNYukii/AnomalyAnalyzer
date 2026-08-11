@@ -29,7 +29,7 @@ const makeConcentrationRecords = (): Record[] => {
     records.push({
       hour,
       concentration:
-        (records.at(-1)?.concentration ?? 0) + makeRandomNum(1, 30),
+        (records.at(-1)?.concentration ?? 0) + makeRandomNum(1, 15),
     })
   })
 
@@ -38,6 +38,7 @@ const makeConcentrationRecords = (): Record[] => {
 
 /**
  * 折れ線グラフ
+ *
  * 直近6時間のアノマリー濃度をランダム生成し、表示する
  */
 export const LineChart = () => {

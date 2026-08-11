@@ -3,15 +3,16 @@ import { TypingText } from '../../misc/elements/TypingText'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { makeRandomNum } from '../../misc/utils/number'
 
-const INITIALIZE_LOG_TEXT = `Inspecter Authenticated
-A.M.I.S ver 1.46.401 loaded
-Anomaly Tracker Enabled
-Satellite Monitoring Activated
-Realtime mapping on
-Measuring anomalium concentration activated
-Dynamic waveform chart on
-Search mode Selected
-All systems online`
+const INITIALIZE_LOG_TEXT = `AUTH - Observer Authenticated
+SYS - A.A.M.S. v4.46.401 Loaded
+INIT - Anomaly Tracker ENABLED
+INIT - Satellite Monitoring ACTIVATED
+INIT - Anomalium Concentrarion Measurement ACTIVATED
+MODE - Real-time Mapping ON
+MODE - Real-time Chart ON
+MODE - Search Mode SELECTED
+STAT - ALL SYSTEMS ONLINE
+`
 
 const makeRandom4NumberStr = (): string => {
   const randomNum = makeRandomNum(1, 10000)

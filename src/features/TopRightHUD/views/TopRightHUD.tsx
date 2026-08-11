@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { TypingText } from '../../misc/elements/TypingText'
 import { CountingUpSlider } from '../elements/CountingUpSlider'
 import { CountingUpText } from '../elements/CountingUpText'
-import { getRandomItem } from '../../misc/utils/array'
+import { pickRandomItem } from '../../misc/utils/array'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { makeRandomNum } from '../../misc/utils/number'
 
@@ -45,7 +45,7 @@ const ClockSection = () => {
 }
 
 const WeatherSection = () => {
-  const weather = getRandomItem(WEATHERS)
+  const weather = pickRandomItem(WEATHERS)
   const temperature = makeRandomNum(10, 40, 1)
   const humidity = makeRandomNum(30, 70, 1)
 

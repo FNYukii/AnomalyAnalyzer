@@ -9,6 +9,7 @@ import { AREA_TYPES } from '../../misc/constants'
 import { PentagonRadarChart } from '../parts/PentagonRadarChart'
 import { useEffect, useState } from 'react'
 import { makeTrueByPercentage } from '../../misc/utils/boolean'
+import { TypingText } from '../../misc/elements/TypingText'
 
 const CHART_TYPES = ['barWaveform', 'line', 'pentagonRadar'] as const
 
@@ -26,9 +27,10 @@ const ChartSection = ({ className }: ChartSectionProps) => {
   const [areaName, setAreaName] = useState(makeAreaName())
   const [chartType, setChartType] = useState(pickRandomItem(CHART_TYPES))
 
+  // 一定間隔ごとに一定確率でグラフを入れ替え
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (makeTrueByPercentage(80)) return
+      if (makeTrueByPercentage(90)) return
 
       setAreaName(makeAreaName())
       setChartType(pickRandomItem(CHART_TYPES))
@@ -42,7 +44,9 @@ const ChartSection = ({ className }: ChartSectionProps) => {
   return (
     <FadeIn key={areaName}>
       <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
-        <span className="text-sm">{areaName}</span>
+        <DisplayDelay delay={400}>
+          <TypingText text={areaName} className="text-sm" />
+        </DisplayDelay>
 
         <div
           className={clsx(

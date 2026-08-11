@@ -5,12 +5,14 @@ import {
   ScatterChart as RCScatterChart,
   XAxis,
   YAxis,
+  ZAxis,
 } from 'recharts'
 import { makeRandomNum } from '../../misc/utils/number'
 
 type Record = {
   x: number
   y: number
+  size: number
 }
 
 const makeCoordinateRecords = (): Record[] => {
@@ -18,10 +20,12 @@ const makeCoordinateRecords = (): Record[] => {
     {
       x: 5,
       y: 5,
+      size: 1,
     },
     {
       x: makeRandomNum(0, 10, 1),
       y: makeRandomNum(0, 10, 1),
+      size: 5,
     },
   ]
 }
@@ -52,6 +56,7 @@ export const ScatterChart = () => {
           {
             x: makeRandomNum(0, 10, 1),
             y: makeRandomNum(0, 10, 1),
+            size: makeRandomNum(1, 6),
           },
         ]
       })
@@ -63,7 +68,7 @@ export const ScatterChart = () => {
   }, [])
 
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer className="p-1">
       <RCScatterChart>
         <XAxis
           dataKey="x"
@@ -79,6 +84,8 @@ export const ScatterChart = () => {
           width={0}
           height={0}
         />
+
+        <ZAxis type="number" dataKey="size" range={[2, 200]} />
 
         <Scatter data={data} fill="var(--color-primary)" />
       </RCScatterChart>

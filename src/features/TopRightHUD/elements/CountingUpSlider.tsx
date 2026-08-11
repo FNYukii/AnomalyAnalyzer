@@ -14,21 +14,24 @@ export const CountingUpSlider = ({
   color = 'primary',
   intervalDelay = DEFAULT_INTERVAL_DELAY,
 }: Props) => {
-  const [countingUpRate, setCountingUpRate] = useState(0)
+  const [countingUpPercentage, setCountingUpPercentage] = useState(0)
+
+  const [isCompleted, setIsCompleted] = useState(false)
 
   useEffect(() => {
     // props.textが更新されたら、表示をリセット
-    setCountingUpRate(0)
+    setCountingUpPercentage(0)
 
     let intervalId: number
 
     intervalId = setInterval(() => {
-      setCountingUpRate((prevNum) => {
+      setCountingUpPercentage((prevNum) => {
         if (prevNum < initialPercentage) {
           return prevNum + 5
         }
 
         clearInterval(intervalId)
+        setIsCompleted(true)
         return initialPercentage
       })
     }, intervalDelay)
@@ -41,7 +44,12 @@ export const CountingUpSlider = ({
 
   return (
     <div className="relative">
-      <Slider percentage={countingUpRate} color={color} className="absolute" />
+      <Slider
+        percentage={!isCompleted ? countingUpPercentage : initialPercentage}
+        color={color}
+        duration={!isCompleted ? 'fast' : 'slow'}
+        className="absolute"
+      />
       <Slider percentage={0} className="invisible" />
     </div>
   )

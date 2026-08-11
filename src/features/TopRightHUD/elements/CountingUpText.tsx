@@ -16,6 +16,8 @@ export const CountingUpText = ({
 }: Props) => {
   const [countingUpNumber, setCountingUpNumber] = useState(0)
 
+  const [isCompleted, setIsCompleted] = useState(false)
+
   useEffect(() => {
     // props.textが更新されたら、表示をリセット
     setCountingUpNumber(0)
@@ -29,6 +31,7 @@ export const CountingUpText = ({
         }
 
         clearInterval(intervalId)
+        setIsCompleted(true)
         return prevNum
       })
     }, intervalDelay)
@@ -41,7 +44,9 @@ export const CountingUpText = ({
 
   return (
     <div className="relative *:whitespace-pre">
-      <p className={clsx('absolute', className)}>{countingUpNumber}</p>
+      <p className={clsx('absolute', className)}>
+        {!isCompleted ? countingUpNumber : initialNum}
+      </p>
       <p className={clsx('invisible', className)}>{initialNum}</p>
     </div>
   )

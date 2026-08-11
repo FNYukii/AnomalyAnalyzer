@@ -3,10 +3,16 @@ import clsx from 'clsx'
 type Props = {
   percentage: number
   color?: 'primary' | 'accent'
+  duration?: 'fast' | 'slow'
   className?: string
 }
 
-export const Slider = ({ percentage, color = 'primary', className }: Props) => {
+export const Slider = ({
+  percentage,
+  color = 'primary',
+  duration = 'fast',
+  className,
+}: Props) => {
   // 割合を0〜100%の範囲内に安全に収める
   const clampedValue = Math.min(100, Math.max(0, percentage))
 
@@ -25,7 +31,8 @@ export const Slider = ({ percentage, color = 'primary', className }: Props) => {
           'w-full',
           color === 'primary' && 'bg-primary/40',
           color === 'accent' && 'bg-accent/40',
-          'transition-all duration-150 ease-out',
+          'transition-all ease-out',
+          duration === 'fast' ? 'duration-150' : 'duration-800',
         )}
         style={{ height: `${clampedValue}%` }}
       />

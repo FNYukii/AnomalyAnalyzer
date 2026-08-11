@@ -5,6 +5,7 @@
   --color-primary: var(--color-sky-500);
 }
 
+/* ページのスクロール無効化 */
 html {
   @apply overscroll-none;
 }
@@ -13,6 +14,54 @@ body {
   font-family: Exo;
 }
 
+/* スクロールバー非表示用クラス */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+/* 角のみ枠線表示用クラス */
+@utility corner-border {
+  position: relative;
+
+  /* デフォルト値の設定（指定がなければこれらが使われます） */
+  --corner-color: currentColor; /* デフォルトはテキスト色（または任意のプライマリ色） */
+  --corner-width: 1px; /* デフォルトの太さ */
+  --corner-size: 16px; /* 「く」の字の長さ */
+  --base-border-width: 1px; /* 本体要素の枠線の太さ */
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    /* 本体の border の上に重ねるため、外側に広げる */
+    inset: calc(-1 * var(--base-border-width));
+
+    /* 独自の色と太さを適用 */
+    border: var(--corner-width) solid var(--corner-color);
+
+    /* 四隅だけを表示するマスク */
+    -webkit-mask:
+      linear-gradient(#000 0 0) top left / var(--corner-size) var(--corner-size)
+        no-repeat,
+      linear-gradient(#000 0 0) top right / var(--corner-size)
+        var(--corner-size) no-repeat,
+      linear-gradient(#000 0 0) bottom left / var(--corner-size)
+        var(--corner-size) no-repeat,
+      linear-gradient(#000 0 0) bottom right / var(--corner-size)
+        var(--corner-size) no-repeat;
+    mask:
+      linear-gradient(#000 0 0) top left / var(--corner-size) var(--corner-size)
+        no-repeat,
+      linear-gradient(#000 0 0) top right / var(--corner-size)
+        var(--corner-size) no-repeat,
+      linear-gradient(#000 0 0) bottom left / var(--corner-size)
+        var(--corner-size) no-repeat,
+      linear-gradient(#000 0 0) bottom right / var(--corner-size)
+        var(--corner-size) no-repeat;
+  }
+}
+@utility corner-border-* {
+  --corner-color: --value(--color-*);
 }

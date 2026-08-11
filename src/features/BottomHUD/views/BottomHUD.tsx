@@ -11,7 +11,8 @@ export const BottomHUD = () => {
           <section
             className={clsx(
               'aspect-video',
-              'border border-primary bg-primary/15',
+              'border border-primary/50 bg-primary/15',
+              'corner-border corner-border-primary',
             )}
           >
             <BarWaveformChart />
@@ -24,7 +25,8 @@ export const BottomHUD = () => {
           <section
             className={clsx(
               'aspect-video',
-              'border border-primary bg-primary/15',
+              'border border-primary/50 bg-primary/15',
+              'corner-border corner-border-primary',
             )}
           >
             <BarWaveformChart />

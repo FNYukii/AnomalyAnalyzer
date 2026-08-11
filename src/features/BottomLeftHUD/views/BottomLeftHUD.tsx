@@ -7,6 +7,8 @@ import { makeRandomNum } from '../../misc/utils/number'
 import { pickRandomItem } from '../../misc/utils/array'
 import { AREA_TYPES } from '../../misc/constants'
 import { PentagonRadarChart } from '../parts/PentagonRadarChart'
+import { useEffect, useState } from 'react'
+import { makeTrueByPercentage } from '../../misc/utils/boolean'
 
 const CHART_TYPES = ['barWaveform', 'line', 'pentagonRadar'] as const
 
@@ -17,34 +19,44 @@ const makeAreaName = (): string => {
 }
 
 type ChartSectionProps = {
-  displayDelay?: number
   className?: string
 }
 
-const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
-  const areaName = makeAreaName()
-  const chartType = pickRandomItem(CHART_TYPES)
+const ChartSection = ({ className }: ChartSectionProps) => {
+  const [areaName, setAreaName] = useState(makeAreaName())
+  const [chartType, setChartType] = useState(pickRandomItem(CHART_TYPES))
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (makeTrueByPercentage(80)) return
+
+      setAreaName(makeAreaName())
+      setChartType(pickRandomItem(CHART_TYPES))
+    }, 5000)
+
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
 
   return (
-    <DisplayDelay delay={displayDelay ?? 0}>
-      <FadeIn>
-        <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
-          <span className="text-sm">{areaName}</span>
+    <FadeIn key={areaName}>
+      <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
+        <span className="text-sm">{areaName}</span>
 
-          <div
-            className={clsx(
-              'aspect-video',
-              'border border-primary/50 bg-primary/15',
-              'corner-border corner-border-primary',
-            )}
-          >
-            {chartType === 'barWaveform' && <BarWaveformChart />}
-            {chartType === 'line' && <LineChart />}
-            {chartType === 'pentagonRadar' && <PentagonRadarChart />}
-          </div>
-        </section>
-      </FadeIn>
-    </DisplayDelay>
+        <div
+          className={clsx(
+            'aspect-video',
+            'border border-primary/50 bg-primary/15',
+            'corner-border corner-border-primary',
+          )}
+        >
+          {chartType === 'barWaveform' && <BarWaveformChart />}
+          {chartType === 'line' && <LineChart />}
+          {chartType === 'pentagonRadar' && <PentagonRadarChart />}
+        </div>
+      </section>
+    </FadeIn>
   )
 }
 
@@ -56,10 +68,21 @@ export const BottomLeftHUD = () => {
         'grid grid-cols-3 grid-rows-2 gap-y-2 gap-x-3',
       )}
     >
-      <ChartSection displayDelay={3000} />
-      <ChartSection displayDelay={3200} className="col-start-1 row-start-2" />
-      <ChartSection displayDelay={3400} className="col-start-2 row-start-2" />
-      <ChartSection displayDelay={3600} className="col-start-3 row-start-2" />
+      <DisplayDelay delay={3000}>
+        <ChartSection />
+      </DisplayDelay>
+
+      <DisplayDelay delay={3200}>
+        <ChartSection className="col-start-1 row-start-2" />
+      </DisplayDelay>
+
+      <DisplayDelay delay={3400}>
+        <ChartSection className="col-start-2 row-start-2" />
+      </DisplayDelay>
+
+      <DisplayDelay delay={3600}>
+        <ChartSection className="col-start-3 row-start-2" />
+      </DisplayDelay>
     </div>
   )
 }

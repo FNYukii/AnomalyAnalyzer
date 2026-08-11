@@ -7,6 +7,8 @@ import { AREA_TYPES } from '../../misc/constants'
 import { PieChart } from '../parts/PieChart'
 import { ScatterChart } from '../parts/ScatterChart'
 import { TriangleRadarChart } from '../parts/TriangleRadarChart'
+import { useEffect, useState } from 'react'
+import { makeTrueByPercentage } from '../../misc/utils/boolean'
 
 const CHART_TYPES = ['pie', 'scatter', 'triangleRadar'] as const
 
@@ -17,34 +19,44 @@ const makeAreaName = (): string => {
 }
 
 type ChartSectionProps = {
-  displayDelay?: number
   className?: string
 }
 
-const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
-  const areaName = makeAreaName()
-  const chartType = pickRandomItem(CHART_TYPES)
+const ChartSection = ({ className }: ChartSectionProps) => {
+  const [areaName, setAreaName] = useState(makeAreaName())
+  const [chartType, setChartType] = useState(pickRandomItem(CHART_TYPES))
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (makeTrueByPercentage(90)) return
+
+      setAreaName(makeAreaName())
+      setChartType(pickRandomItem(CHART_TYPES))
+    }, 5000)
+
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
 
   return (
-    <DisplayDelay delay={displayDelay ?? 0}>
-      <FadeIn>
-        <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
-          <span className="text-sm">{areaName}</span>
+    <FadeIn key={areaName}>
+      <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
+        <span className="text-sm">{areaName}</span>
 
-          <div
-            className={clsx(
-              'aspect-square',
-              'border border-primary/50 bg-primary/15',
-              'corner-border corner-border-primary',
-            )}
-          >
-            {chartType === 'pie' && <PieChart />}
-            {chartType === 'scatter' && <ScatterChart />}
-            {chartType === 'triangleRadar' && <TriangleRadarChart />}
-          </div>
-        </section>
-      </FadeIn>
-    </DisplayDelay>
+        <div
+          className={clsx(
+            'aspect-square',
+            'border border-primary/50 bg-primary/15',
+            'corner-border corner-border-primary',
+          )}
+        >
+          {chartType === 'pie' && <PieChart />}
+          {chartType === 'scatter' && <ScatterChart />}
+          {chartType === 'triangleRadar' && <TriangleRadarChart />}
+        </div>
+      </section>
+    </FadeIn>
   )
 }
 
@@ -52,11 +64,22 @@ export const BottomRightHUD = () => {
   return (
     <div className={clsx('h-full', 'flex justify-end')}>
       <div className={clsx('grid grid-rows-3 grid-cols-3 gap-y-2 gap-x-3')}>
-        <ChartSection displayDelay={4600} className="col-start-3" />
-        <ChartSection displayDelay={4400} className="col-start-3 row-start-2" />
-        <ChartSection displayDelay={4200} className="col-start-3 row-start-3" />
-        <ChartSection displayDelay={4000} className="col-start-2 row-start-3" />
-        <ChartSection displayDelay={3800} className="row-start-3" />
+        <DisplayDelay delay={4600}>
+          <ChartSection className="col-start-3" />
+        </DisplayDelay>
+
+        <DisplayDelay delay={4400}>
+          <ChartSection className="col-start-3 row-start-2" />
+        </DisplayDelay>
+        <DisplayDelay delay={4200}>
+          <ChartSection className="col-start-3 row-start-3" />
+        </DisplayDelay>
+        <DisplayDelay delay={4000}>
+          <ChartSection className="col-start-2 row-start-3" />
+        </DisplayDelay>
+        <DisplayDelay delay={3800}>
+          <ChartSection className="row-start-3" />
+        </DisplayDelay>
       </div>
     </div>
   )

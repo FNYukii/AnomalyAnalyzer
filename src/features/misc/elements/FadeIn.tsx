@@ -16,7 +16,7 @@ export const FadeIn = ({ children }: Props) => {
   return React.cloneElement(children, {
     className: clsx(
       children.props.className,
-      'transition duration-300',
+      'transition duration-500',
       isVisible ? 'opacity-100' : 'opacity-0',
     ),
   })

@@ -15,7 +15,7 @@ export const AREA_TYPES = [
   'base',
   'building',
   'site',
-  'area,',
+  'area',
   'zone',
   'district',
   'city',

@@ -3,7 +3,7 @@ import { BarWaveformChart } from '../parts/BarWaveformChart'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { FadeIn } from '../../misc/elements/FadeIn'
 import { LineChart } from '../parts/LineChart'
-import { ScatterChart } from '../parts/ScatterChart'
+import { ScatterChart } from '../../BottomRightHUD/parts/ScatterChart'
 import { makeRandomNum } from '../../misc/utils/number'
 import { pickRandomItem } from '../../misc/utils/array'
 import { AREA_TYPES } from '../../misc/constants'
@@ -55,12 +55,13 @@ export const BottomLeftHUD = () => {
     <div
       className={clsx(
         'h-full w-fit',
-        'grid grid-rows-2 grid-cols-2 gap-y-2 gap-x-3',
+        'grid grid-cols-3 grid-rows-2 gap-y-2 gap-x-3',
       )}
     >
       <ChartSection displayDelay={3000} />
-      <ChartSection displayDelay={3200} className="col-start-1" />
-      <ChartSection displayDelay={3400} />
+      <ChartSection displayDelay={3200} className="col-start-1 row-start-2" />
+      <ChartSection displayDelay={3400} className="col-start-2 row-start-2" />
+      <ChartSection displayDelay={3600} className="col-start-3 row-start-2" />
     </div>
   )
 }

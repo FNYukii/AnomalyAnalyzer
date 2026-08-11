@@ -15,19 +15,14 @@ export const App = () => {
     >
       <SatelliteView className="fixed size-full" />
 
-      <div
-        className={clsx(
-          'fixed size-full p-2',
-          'grid grid-rows-[auto_1fr] gap-6',
-        )}
-      >
-        <div className="flex justify-between">
+      <div className={clsx('fixed size-full p-2', 'flex justify-between')}>
+        <div className="grid grid-rows-[auto_1fr] gap-6">
           <TopLeftHUD />
-          <TopRightHUD />
+          <BottomLeftHUD />
         </div>
 
-        <div className="flex justify-between">
-          <BottomLeftHUD />
+        <div className="grid grid-rows-[auto_1fr] gap-6 align-end">
+          <TopRightHUD />
           <BottomRightHUD />
         </div>
       </div>

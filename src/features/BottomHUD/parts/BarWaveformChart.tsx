@@ -10,6 +10,10 @@ const SPEED = 0.6 // 流れるスピード（px/frame）
 const BAR_WIDTH = 1.5 // 各バーの幅（px）
 const BAR_GAP = 1 // バー同士の間隔（px）
 
+/**
+ * 棒式波形グラフ
+ * 振幅をランダム生成し、リアルタイム表示し続ける
+ */
 export const BarWaveformChart = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 

@@ -2,10 +2,11 @@ import clsx from 'clsx'
 import { BarWaveformChart } from '../parts/BarWaveformChart'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { FadeIn } from '../elements/FadeIn'
+import { LineChart } from '../parts/LineChart'
 
 type ChartSectionProps = {
   title: string
-  variant: 'barWaveform'
+  variant: 'barWaveform' | 'line'
   displayDelay?: number
   className?: string
 }
@@ -30,6 +31,7 @@ const ChartSection = ({
             )}
           >
             {variant === 'barWaveform' && <BarWaveformChart />}
+            {variant === 'line' && <LineChart />}
           </div>
         </section>
       </FadeIn>
@@ -54,11 +56,7 @@ export const BottomHUD = () => {
         className="col-start-1"
       />
 
-      <ChartSection
-        title="District 57"
-        variant="barWaveform"
-        displayDelay={3400}
-      />
+      <ChartSection title="District 57" variant="line" displayDelay={3400} />
     </div>
   )
 }

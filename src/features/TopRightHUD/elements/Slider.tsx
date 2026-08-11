@@ -14,7 +14,7 @@ export const Slider = ({
   className,
 }: Props) => {
   // 割合を0〜100%の範囲内に安全に収める
-  const clampedValue = Math.min(100, Math.max(0, percentage))
+  const clampedPercentage = Math.min(100, Math.max(0, percentage))
 
   return (
     <div
@@ -34,7 +34,7 @@ export const Slider = ({
           'transition-all ease-out',
           duration === 'fast' ? 'duration-150' : 'duration-800',
         )}
-        style={{ height: `${clampedValue}%` }}
+        style={{ height: `${clampedPercentage}%` }}
       />
     </div>
   )

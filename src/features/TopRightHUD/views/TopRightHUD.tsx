@@ -7,6 +7,7 @@ import { CountingUpText } from '../elements/CountingUpText'
 import { pickRandomItem } from '../../misc/utils/array'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { makeRandomNum } from '../../misc/utils/number'
+import { makeTrueByPercentage } from '../../misc/utils/boolean'
 
 const WEATHERS = [
   'clear',
@@ -62,23 +63,23 @@ const WeatherSection = () => {
 }
 
 const LevelSection = () => {
-  const [level, setLevel] = useState(makeRandomNum(1, MAX_AREA_LEVEL + 1))
+  const [level, setLevel] = useState(makeRandomNum(1, 3))
 
   // 一定間隔ごとに一定確率で level を 1~2 段階変化させる
   useEffect(() => {
     const intervalId = setInterval(() => {
       setLevel((prev) => {
-        const isChange = makeRandomNum(0, 10) > 7
+        const isChange = makeTrueByPercentage(30)
         if (!isChange) return prev
 
-        const isLevelUp = makeRandomNum(0, 10) > 5
+        const isLevelUp = makeTrueByPercentage(50)
         if (isLevelUp) {
           const newLevel = prev + makeRandomNum(1, 2) // 0,1
-          return newLevel <= 7 ? newLevel : prev
+          return newLevel > 7 ? 7 : newLevel
         }
 
         const newLevel = prev - makeRandomNum(1, 3) // 0,1,2
-        return newLevel >= 1 ? newLevel : prev
+        return newLevel < 1 ? 1 : newLevel
       })
     }, 5000)
 

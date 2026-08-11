@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { makeRandomNum } from '../../misc/utils/number'
+import { makeTrueByPercentage } from '../../misc/utils/boolean'
 
 const COLOR = '#0ea5e9' // 波形の色
 const SPEED = 0.6 // 流れるスピード（px/frame）
@@ -55,7 +56,7 @@ export const BarWaveformChart = () => {
         amplitudes.shift()
 
         // 新しい振幅を生成
-        const isSpike = makeRandomNum(0, 10) === 9
+        const isSpike = makeTrueByPercentage(10)
         const newAmplitude = isSpike
           ? makeRandomNum(0.2, 1, 2)
           : makeRandomNum(0.05, 0.2, 2)

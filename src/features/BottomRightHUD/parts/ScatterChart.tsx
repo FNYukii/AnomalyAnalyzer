@@ -8,6 +8,7 @@ import {
   ZAxis,
 } from 'recharts'
 import { makeRandomNum } from '../../misc/utils/number'
+import { makeTrueByPercentage } from '../../misc/utils/boolean'
 
 type Record = {
   x: number
@@ -42,7 +43,7 @@ export const ScatterChart = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       // 座標を追加するかどうかは確率で決める
-      if (makeRandomNum(0, 10) > 5) return
+      if (makeTrueByPercentage(50)) return
 
       setData((prev) => {
         // 座標が増えすぎないように、一定数超えたら止める

@@ -17,7 +17,7 @@ export const App = () => {
       <div
         className={clsx(
           'fixed size-full p-2',
-          'flex flex-col gap-8 items-between',
+          'grid grid-rows-[auto_1fr] gap-6',
         )}
       >
         <div className="flex justify-between">
@@ -25,9 +25,7 @@ export const App = () => {
           <TopRightHUD />
         </div>
 
-        <div className="grow">
-          <BottomHUD />
-        </div>
+        <BottomHUD />
       </div>
     </div>
   )

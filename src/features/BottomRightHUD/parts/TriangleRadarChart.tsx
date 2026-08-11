@@ -1,11 +1,11 @@
 import {
-  PolarAngleAxis,
   PolarGrid,
   Radar,
   RadarChart as RCRadarChart,
   ResponsiveContainer,
 } from 'recharts'
 import { makeRandomNum } from '../../misc/utils/number'
+import { useEffect, useState } from 'react'
 
 type Record = {
   name: string
@@ -26,14 +26,6 @@ const makeStatRecords = (): Record[] => {
       name: 'POP',
       value: makeRandomNum(0, 101),
     },
-    {
-      name: 'CNC',
-      value: makeRandomNum(0, 101),
-    },
-    {
-      name: 'SIT',
-      value: makeRandomNum(0, 101),
-    },
   ]
 }
 
@@ -42,19 +34,23 @@ const makeStatRecords = (): Record[] => {
  *
  * アノマリーの統計情報をランダム生成し、表示する
  */
-export const RadarChart = () => {
-  const data = makeStatRecords()
+export const TriangleRadarChart = () => {
+  const [data, setData] = useState(makeStatRecords())
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setData(makeStatRecords())
+    }, 5000)
+
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
 
   return (
     <ResponsiveContainer>
-      <RCRadarChart data={data} cy="54%">
+      <RCRadarChart data={data} cy="60%" outerRadius="99%">
         <PolarGrid stroke="var(--color-primary)" strokeOpacity={0.6} />
-        <PolarAngleAxis
-          dataKey="name"
-          stroke="var(--color-primary)"
-          strokeOpacity={0.6}
-          fontSize={12}
-        />
 
         <Radar
           dataKey="value"

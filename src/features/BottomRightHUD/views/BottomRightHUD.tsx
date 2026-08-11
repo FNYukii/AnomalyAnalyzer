@@ -6,8 +6,9 @@ import { makeRandomNum } from '../../misc/utils/number'
 import { AREA_TYPES } from '../../misc/constants'
 import { PieChart } from '../parts/PieChart'
 import { ScatterChart } from '../parts/ScatterChart'
+import { TriangleRadarChart } from '../parts/TriangleRadarChart'
 
-const CHART_TYPES = ['pie', 'scatter'] as const
+const CHART_TYPES = ['pie', 'scatter', 'triangleRadar'] as const
 
 const makeAreaName = (): string => {
   const areaType = pickRandomItem(AREA_TYPES)
@@ -39,6 +40,7 @@ const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
           >
             {chartType === 'pie' && <PieChart />}
             {chartType === 'scatter' && <ScatterChart />}
+            {chartType === 'triangleRadar' && <TriangleRadarChart />}
           </div>
         </section>
       </FadeIn>

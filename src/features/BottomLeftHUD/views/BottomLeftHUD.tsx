@@ -3,13 +3,12 @@ import { BarWaveformChart } from '../parts/BarWaveformChart'
 import { DisplayDelay } from '../../misc/elements/DisplayDelay'
 import { FadeIn } from '../../misc/elements/FadeIn'
 import { LineChart } from '../parts/LineChart'
-import { ScatterChart } from '../../BottomRightHUD/parts/ScatterChart'
 import { makeRandomNum } from '../../misc/utils/number'
 import { pickRandomItem } from '../../misc/utils/array'
 import { AREA_TYPES } from '../../misc/constants'
-import { RadarChart } from '../parts/RadarChart'
+import { PentagonRadarChart } from '../parts/PentagonRadarChart'
 
-const CHART_TYPES = ['barWaveform', 'line', 'scatter', 'radar'] as const
+const CHART_TYPES = ['barWaveform', 'line', 'pentagonRadar'] as const
 
 const makeAreaName = (): string => {
   const areaType = pickRandomItem(AREA_TYPES)
@@ -41,8 +40,7 @@ const ChartSection = ({ displayDelay, className }: ChartSectionProps) => {
           >
             {chartType === 'barWaveform' && <BarWaveformChart />}
             {chartType === 'line' && <LineChart />}
-            {chartType === 'scatter' && <ScatterChart />}
-            {chartType === 'radar' && <RadarChart />}
+            {chartType === 'pentagonRadar' && <PentagonRadarChart />}
           </div>
         </section>
       </FadeIn>

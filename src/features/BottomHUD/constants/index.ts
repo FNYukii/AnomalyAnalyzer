@@ -22,4 +22,4 @@ export const AREA_TYPES = [
   'G',
 ] as const
 
-export const CHART_TYPES = ['line', 'scatter', 'barWaveform'] as const
+export const CHART_TYPES = ['barWaveform', 'line', 'scatter'] as const

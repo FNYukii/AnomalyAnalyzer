@@ -1,6 +1,5 @@
 import clsx from 'clsx'
 import { useState, useEffect } from 'react'
-import { TriangleRadarChart } from '../charts/TriangleRadarChart'
 import { AREA_TYPES } from '../../common/constants'
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
 import { FadeIn } from '../../common/elements/FadeIn'
@@ -8,12 +7,15 @@ import { TypingText } from '../../common/elements/TypingText'
 import { pickRandomItem } from '../../common/utils/array'
 import { makeTrueByPercentage } from '../../common/utils/boolean'
 import { makeRandomNum } from '../../common/utils/number'
-import { BarWaveformChart } from '../charts/BarWaveformChart'
-import { LineChart } from '../charts/LineChart'
-import { PentagonRadarChart } from '../charts/PentagonRadarChart'
-import { AreaChart } from '../charts/AreaChart'
-import { PieChart } from '../charts/PieChart'
-import { ScatterChart } from '../charts/ScatterChart'
+import {
+  AreaChart,
+  BarWaveformChart,
+  LineChart,
+  PentagonRadarChart,
+  PieChart,
+  ScatterChart,
+  TriangleRadarChart,
+} from '../charts'
 
 const LANDSCAPE_CHART_TYPES = [
   'barWaveform',

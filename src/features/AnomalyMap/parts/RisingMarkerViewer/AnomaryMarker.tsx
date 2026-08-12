@@ -4,6 +4,10 @@ import { makeTrueByPercentage } from '../../../common/utils/boolean'
 import { makeRandomNum } from '../../../common/utils/number'
 import { MarkerIcon } from '../../elements/MarkerIcon'
 import { FadeIn } from '../../../common/elements/FadeIn'
+import { CountingUpText } from '../../../TopRightHUD/elements/CountingUpText'
+import { useState } from 'react'
+import { TypingText } from '../../../common/elements/TypingText'
+import { DisplayDelay } from '../../../common/elements/DisplayDelay'
 
 const ANOMALY_TYPES = [
   'wind',
@@ -26,11 +30,26 @@ type IntegerAndDecimalTextProps = {
 const IntegerAndDecimalText = ({ value }: IntegerAndDecimalTextProps) => {
   const [integerPart, decimalPart] = value.toString().split('.')
 
+  const [isCountUpCompleted, setIsCountUpCompleted] = useState(false)
+
+  const handleOnComplete = () => {
+    setIsCountUpCompleted(true)
+  }
+
   return (
     <p>
-      <span className="text-2xl">{integerPart}</span>
+      <CountingUpText
+        num={Number(integerPart)}
+        intervalDelay={1000 / Number(integerPart)} // 表示する数値が大きいほど、interval間隔は小さく
+        onComplete={handleOnComplete}
+        className="inline-block text-2xl leading-none"
+      />
 
-      {decimalPart !== undefined && <span>.{decimalPart}</span>}
+      {decimalPart !== undefined && (
+        <span className={clsx(!isCountUpCompleted && 'invisible')}>
+          .{decimalPart}
+        </span>
+      )}
     </p>
   )
 }
@@ -59,15 +78,21 @@ export const AnomaryMarker = () => {
         <div>
           <IntegerAndDecimalText value={anomaliumConcentration} />
 
-          <div className="mt-1 flex gap-1">
-            <div
-              className={clsx(
-                'w-[3px]',
-                isGreatAnomaly ? 'bg-accent' : 'bg-primary',
-              )}
-            />
-            <p className="leading-none">{anomalyTypes.join(', ')}</p>
-          </div>
+          <DisplayDelay delay={1200}>
+            <div className="mt-1 flex gap-1">
+              <div
+                className={clsx(
+                  'w-[3px]',
+                  isGreatAnomaly ? 'bg-accent' : 'bg-primary',
+                )}
+              />
+
+              <TypingText
+                text={anomalyTypes.join(', ')}
+                className="leading-none"
+              />
+            </div>
+          </DisplayDelay>
         </div>
       </div>
     </FadeIn>

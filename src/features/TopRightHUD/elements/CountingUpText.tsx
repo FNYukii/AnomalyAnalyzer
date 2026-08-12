@@ -6,12 +6,14 @@ const DEFAULT_INTERVAL_DELAY = 180
 type Props = {
   num: number
   intervalDelay?: number
+  onComplete?: () => void
   className?: string
 }
 
 export const CountingUpText = ({
   num: initialNum,
   intervalDelay = DEFAULT_INTERVAL_DELAY,
+  onComplete = () => {},
   className,
 }: Props) => {
   const [countingUpNumber, setCountingUpNumber] = useState(0)
@@ -32,6 +34,7 @@ export const CountingUpText = ({
 
         clearInterval(intervalId)
         setIsCompleted(true)
+        onComplete()
         return prevNum
       })
     }, intervalDelay)
@@ -43,11 +46,11 @@ export const CountingUpText = ({
   }, [])
 
   return (
-    <div className="relative *:whitespace-pre">
-      <p className={clsx('absolute', className)}>
+    <div className={clsx('relative *:whitespace-pre', className)}>
+      <span className={clsx('absolute', className)}>
         {!isCompleted ? countingUpNumber : initialNum}
-      </p>
-      <p className={clsx('invisible', className)}>{initialNum}</p>
+      </span>
+      <span className={clsx('invisible', className)}>{initialNum}</span>
     </div>
   )
 }

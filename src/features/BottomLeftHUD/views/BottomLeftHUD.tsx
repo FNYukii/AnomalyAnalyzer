@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
-import { ChartSection } from '../../misc/parts/ChartSection'
+import { ChartSection } from '../../commonBottomHUD/parts/ChartSection'
 
 export const BottomLeftHUD = () => {
   return (

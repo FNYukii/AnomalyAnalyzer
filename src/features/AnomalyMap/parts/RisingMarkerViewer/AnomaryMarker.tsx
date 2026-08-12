@@ -18,6 +18,28 @@ const ANOMALY_TYPES = [
   'acid',
 ] as const
 
+type IntegerAndDecimalTextProps = {
+  value: number
+}
+
+const IntegerAndDecimalText = ({ value }: IntegerAndDecimalTextProps) => {
+  const [integerPart, decimalPart] = value.toString().split('.')
+
+  return (
+    <p>
+      <span className="text-2xl">{integerPart}</span>
+
+      {decimalPart !== undefined && <span>.{decimalPart}</span>}
+    </p>
+  )
+}
+
+/**
+ * アノマリーマーカー
+ *
+ * - アノマリウム濃度, アノマリータイプ をランダム生成し、表示する
+ * - 一定濃度以上なら、アクセントカラーで表示
+ */
 export const AnomaryMarker = () => {
   const isGreatAnomaly = makeTrueByPercentage(20)
 
@@ -33,7 +55,7 @@ export const AnomaryMarker = () => {
       <MarkerIcon className="size-12" />
 
       <div>
-        <p>{anomaliumConcentration}</p>
+        <IntegerAndDecimalText value={anomaliumConcentration} />
 
         <div className="mt-1 flex gap-1">
           <div

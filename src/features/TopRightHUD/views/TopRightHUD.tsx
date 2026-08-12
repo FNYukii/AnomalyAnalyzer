@@ -145,7 +145,7 @@ const LevelSection = () => {
   return (
     <section className="mt-8 mr-4 flex gap-3">
       <div className="flex flex-col items-end">
-        <DisplayDelay delay={5200}>
+        <DisplayDelay delay={5600}>
           <TypingText
             text={`Alert\nlevel`}
             className={clsx(
@@ -155,7 +155,7 @@ const LevelSection = () => {
           />
         </DisplayDelay>
 
-        <DisplayDelay delay={5400}>
+        <DisplayDelay delay={6000}>
           <CountingUpText
             num={level}
             className={clsx('mt-2 text-6xl h-13', level === 7 && 'text-accent')}
@@ -163,7 +163,7 @@ const LevelSection = () => {
         </DisplayDelay>
       </div>
 
-      <DisplayDelay delay={5400}>
+      <DisplayDelay delay={6000}>
         <CountingUpSlider
           percentage={(level / MAX_AREA_LEVEL) * 100}
           color={level === 7 ? 'accent' : 'primary'}

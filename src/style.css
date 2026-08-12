@@ -12,10 +12,8 @@ html {
 }
 
 body {
-  font-family: Exo;
-  background-color: black;
+  @apply font-['Exo'] bg-black;
 }
-
 /* スクロールバー非表示用クラス */
 .scrollbar-none::-webkit-scrollbar {
   display: none;

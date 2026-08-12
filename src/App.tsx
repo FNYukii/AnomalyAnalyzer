@@ -2,14 +2,13 @@ import clsx from 'clsx'
 import { SatelliteView } from './features/Map/views/SatelliteView'
 import { TopLeftHUD } from './features/TopLeftHUD/views/TopLeftHUD'
 import { TopRightHUD } from './features/TopRightHUD/views/TopRightHUD'
-import { BottomLeftHUD } from './features/BottomLeftHUD/views/BottomLeftHUD'
-import { BottomRightHUD } from './features/BottomRightHUD/views/BottomRightHUD'
+import { BottomHUD } from './features/BottomHUD/views/BottomHUD'
 
 export const App = () => {
   return (
     <div
       className={clsx(
-        'w-screen h-screen',
+        'w-full h-screen',
         'text-primary selection:bg-primary/30 uppercase',
       )}
     >
@@ -26,9 +25,8 @@ export const App = () => {
           <TopRightHUD />
         </div>
 
-        <div className="grid grid-cols-[auto_1fr] gap-4">
-          <BottomLeftHUD />
-          <BottomRightHUD />
+        <div className="flex flex-col justify-end">
+          <BottomHUD />
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { pickRandomItems } from '../../../common/utils/array'
 import { makeTrueByPercentage } from '../../../common/utils/boolean'
 import { makeRandomNum } from '../../../common/utils/number'
@@ -18,21 +19,29 @@ const ANOMALY_TYPES = [
 ] as const
 
 export const AnomaryMarker = () => {
-  const anomaliumConcentration = makeRandomNum(10, 401, 2)
+  const isGreatAnomaly = makeTrueByPercentage(20)
 
-  const isMultipleAnomalyType = makeTrueByPercentage(20)
-  const anomalyTypeCont = makeRandomNum(1, !isMultipleAnomalyType ? 1 : 4)
+  const anomaliumConcentration = !isGreatAnomaly
+    ? makeRandomNum(10, 300, 2)
+    : makeRandomNum(300, 400, 2)
+
+  const anomalyTypeCont = makeRandomNum(1, !isGreatAnomaly ? 1 : 4)
   const anomalyTypes = pickRandomItems(ANOMALY_TYPES, anomalyTypeCont)
 
   return (
-    <div className="flex gap-1">
+    <div className={clsx('flex gap-1', isGreatAnomaly && 'text-accent')}>
       <MarkerIcon className="size-12" />
 
       <div>
         <p>{anomaliumConcentration}</p>
 
         <div className="mt-1 flex gap-1">
-          <div className="w-[3px] bg-primary" />
+          <div
+            className={clsx(
+              'w-[3px]',
+              isGreatAnomaly ? 'bg-accent' : 'bg-primary',
+            )}
+          />
           <p className="leading-none">{anomalyTypes.join(', ')}</p>
         </div>
       </div>

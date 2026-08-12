@@ -1,13 +1,13 @@
 import clsx from 'clsx'
 import dayjs from 'dayjs'
 import { useState, useEffect } from 'react'
-import { TypingText } from '../../misc/elements/TypingText'
+import { TypingText } from '../../common/elements/TypingText'
 import { CountingUpSlider } from '../elements/CountingUpSlider'
 import { CountingUpText } from '../elements/CountingUpText'
-import { pickRandomItem } from '../../misc/utils/array'
-import { DisplayDelay } from '../../misc/elements/DisplayDelay'
-import { makeRandomNum } from '../../misc/utils/number'
-import { makeTrueByPercentage } from '../../misc/utils/boolean'
+import { pickRandomItem } from '../../common/utils/array'
+import { DisplayDelay } from '../../common/elements/DisplayDelay'
+import { makeRandomNum } from '../../common/utils/number'
+import { makeTrueByPercentage } from '../../common/utils/boolean'
 
 const WEATHERS = [
   'clear',

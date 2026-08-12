@@ -1,15 +1,15 @@
 import clsx from 'clsx'
-import { DisplayDelay } from '../../misc/elements/DisplayDelay'
-import { FadeIn } from '../../misc/elements/FadeIn'
-import { pickRandomItem } from '../../misc/utils/array'
-import { makeRandomNum } from '../../misc/utils/number'
-import { AREA_TYPES } from '../../misc/constants'
+import { DisplayDelay } from '../../common/elements/DisplayDelay'
+import { FadeIn } from '../../common/elements/FadeIn'
+import { pickRandomItem } from '../../common/utils/array'
+import { makeRandomNum } from '../../common/utils/number'
+import { AREA_TYPES } from '../../common/constants'
 import { PieChart } from '../parts/PieChart'
 import { ScatterChart } from '../parts/ScatterChart'
 import { TriangleRadarChart } from '../parts/TriangleRadarChart'
 import { useEffect, useState } from 'react'
-import { makeTrueByPercentage } from '../../misc/utils/boolean'
-import { TypingText } from '../../misc/elements/TypingText'
+import { makeTrueByPercentage } from '../../common/utils/boolean'
+import { TypingText } from '../../common/elements/TypingText'
 
 const CHART_TYPES = ['pie', 'scatter', 'triangleRadar'] as const
 

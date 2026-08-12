@@ -8,8 +8,8 @@ import {
   ZAxis,
   ReferenceLine,
 } from 'recharts'
-import { makeRandomNum } from '../../misc/utils/number'
-import { makeTrueByPercentage } from '../../misc/utils/boolean'
+import { makeRandomNum } from '../../common/utils/number'
+import { makeTrueByPercentage } from '../../common/utils/boolean'
 
 type Record = {
   x: number

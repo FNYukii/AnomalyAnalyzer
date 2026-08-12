@@ -1,5 +1,5 @@
 import { ResponsiveContainer, PieChart as RCPieChart, Pie } from 'recharts'
-import { makeRandomNum } from '../../misc/utils/number'
+import { makeRandomNum } from '../../common/utils/number'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { convertToPercentages } from '../utils/number'

@@ -6,7 +6,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { makeRandomNum } from '../../misc/utils/number'
+import { makeRandomNum } from '../../common/utils/number'
 
 type Record = {
   hour: number

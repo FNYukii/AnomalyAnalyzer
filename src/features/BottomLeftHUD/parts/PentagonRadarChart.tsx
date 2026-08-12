@@ -5,7 +5,7 @@ import {
   RadarChart as RCRadarChart,
   ResponsiveContainer,
 } from 'recharts'
-import { makeRandomNum } from '../../misc/utils/number'
+import { makeRandomNum } from '../../common/utils/number'
 
 type Record = {
   name: string

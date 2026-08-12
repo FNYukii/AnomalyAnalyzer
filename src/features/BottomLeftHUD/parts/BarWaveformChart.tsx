@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { makeRandomNum } from '../../misc/utils/number'
-import { makeTrueByPercentage } from '../../misc/utils/boolean'
+import { makeRandomNum } from '../../common/utils/number'
+import { makeTrueByPercentage } from '../../common/utils/boolean'
 
 const COLOR = '#0ea5e9' // 波形の色
 const SPEED = 0.6 // 流れるスピード（px/frame）

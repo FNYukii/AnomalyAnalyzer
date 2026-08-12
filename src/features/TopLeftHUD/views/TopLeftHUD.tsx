@@ -1,7 +1,7 @@
 import clsx from 'clsx'
-import { TypingText } from '../../misc/elements/TypingText'
-import { DisplayDelay } from '../../misc/elements/DisplayDelay'
-import { makeRandomNum } from '../../misc/utils/number'
+import { TypingText } from '../../common/elements/TypingText'
+import { DisplayDelay } from '../../common/elements/DisplayDelay'
+import { makeRandomNum } from '../../common/utils/number'
 
 const INITIALIZE_LOG_TEXT = `AUTH - Observer Authenticated
 SYS - A.A.M.S. v4.46.401 Loaded

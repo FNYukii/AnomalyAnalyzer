@@ -6,6 +6,7 @@ import {
   XAxis,
   YAxis,
   ZAxis,
+  ReferenceLine,
 } from 'recharts'
 import { makeRandomNum } from '../../misc/utils/number'
 import { makeTrueByPercentage } from '../../misc/utils/boolean'
@@ -87,6 +88,19 @@ export const ScatterChart = () => {
         />
 
         <ZAxis type="number" dataKey="size" range={[2, 200]} />
+
+        <ReferenceLine
+          x={5}
+          stroke="var(--color-primary)"
+          opacity={0.4}
+          strokeDasharray="3 3"
+        />
+        <ReferenceLine
+          y={5}
+          stroke="var(--color-primary)"
+          opacity={0.4}
+          strokeDasharray="3 3"
+        />
 
         <Scatter data={data} fill="var(--color-primary)" />
       </RCScatterChart>

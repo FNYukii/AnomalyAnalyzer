@@ -63,7 +63,7 @@ const WeatherSection = () => {
 }
 
 const LevelSection = () => {
-  const [level, setLevel] = useState(makeRandomNum(1, 3))
+  const [level, setLevel] = useState(makeRandomNum(1, 5)) // 1 ~ 4
 
   // 一定間隔ごとに一定確率で level を 1~2 段階変化させる
   useEffect(() => {
@@ -91,7 +91,7 @@ const LevelSection = () => {
   return (
     <section className="mt-8 mr-4 flex gap-3">
       <div className="flex flex-col items-end">
-        <DisplayDelay delay={1000}>
+        <DisplayDelay delay={5400}>
           <TypingText
             text={`Alert\nlevel`}
             className={clsx(
@@ -101,7 +101,7 @@ const LevelSection = () => {
           />
         </DisplayDelay>
 
-        <DisplayDelay delay={1400}>
+        <DisplayDelay delay={5800}>
           <CountingUpText
             num={level}
             className={clsx('mt-2 text-6xl h-13', level === 7 && 'text-accent')}
@@ -109,7 +109,7 @@ const LevelSection = () => {
         </DisplayDelay>
       </div>
 
-      <DisplayDelay delay={1400}>
+      <DisplayDelay delay={5800}>
         <CountingUpSlider
           percentage={(level / MAX_AREA_LEVEL) * 100}
           color={level === 7 ? 'accent' : 'primary'}

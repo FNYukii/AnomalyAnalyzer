@@ -7,7 +7,7 @@ const makeX = () => {
 }
 
 const makeY = () => {
-  return makeRandomNum(15, 61)
+  return makeRandomNum(30, 61)
 }
 
 /**

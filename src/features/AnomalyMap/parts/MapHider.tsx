@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
+const COL_COUNT = 6
+const ROW_COUNT = 6
+
+const INTERVAL_DELAY = 10
+
 const makeHideFlags = (flagCount: number) => {
   return [...Array(flagCount)].map(() => true)
 }
@@ -13,9 +18,6 @@ type MapHiderProps = {
  * 画面上を隠すセルが1つずつ消えていくグリッド
  */
 export const MapHider = ({ className }: MapHiderProps) => {
-  const COL_COUNT = 6
-  const ROW_COUNT = 6
-
   const [hideFlags, setHideFlags] = useState(
     makeHideFlags(COL_COUNT * ROW_COUNT),
   )
@@ -24,18 +26,15 @@ export const MapHider = ({ className }: MapHiderProps) => {
     const intervalId = setInterval(() => {
       setHideFlags((prev) => {
         const firstTrueIndex = prev.findIndex((item) => item === true)
-
         if (firstTrueIndex === -1) {
           clearInterval(intervalId)
           return prev
         }
-
         const newHideFlags = [...prev]
         newHideFlags[firstTrueIndex] = false
-
         return newHideFlags
       })
-    }, 20)
+    }, INTERVAL_DELAY)
 
     return () => {
       clearInterval(intervalId)
@@ -44,13 +43,14 @@ export const MapHider = ({ className }: MapHiderProps) => {
 
   return (
     <div
-      className={clsx(
-        `grid grid-cols-${COL_COUNT} grid-rows-${ROW_COUNT}`,
-        className,
-      )}
+      className={clsx(`grid`, className)}
+      style={{
+        gridTemplateColumns: `repeat(${COL_COUNT}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${ROW_COUNT}, minmax(0, 1fr))`,
+      }}
     >
       {hideFlags.map((isHide) => (
-        <div className={clsx(isHide && 'bg-black')} />
+        <div className={clsx(isHide && 'bg-black')}></div>
       ))}
     </div>
   )

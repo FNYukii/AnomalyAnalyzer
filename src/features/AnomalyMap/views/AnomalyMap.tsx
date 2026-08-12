@@ -1,4 +1,3 @@
-import { DisplayDelay } from '../../common/elements/DisplayDelay'
 import { MapHider } from '../parts/MapHider'
 import { RisingMarkerMap } from '../parts/RisingMarkerViewer/RisingMarkerMap'
 import { ScrollingSatelliteMap } from '../parts/ScrollingSatelliteMap'
@@ -12,9 +11,7 @@ export const AnomalyMap = ({ className }: Props) => {
       <ScrollingSatelliteMap />
       <MapHider className="fixed inset-0" />
 
-      <DisplayDelay delay={1000}>
-        <RisingMarkerMap className="fixed inset-0" />
-      </DisplayDelay>
+      <RisingMarkerMap className="fixed inset-0" />
     </div>
   )
 }

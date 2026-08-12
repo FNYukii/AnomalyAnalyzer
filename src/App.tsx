@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import { SatelliteView } from './features/Map/views/SatelliteView'
 import { TopLeftHUD } from './features/TopLeftHUD/views/TopLeftHUD'
 import { TopRightHUD } from './features/TopRightHUD/views/TopRightHUD'
 import { BottomHUD } from './features/BottomHUD/views/BottomHUD'
+import { AnomalyMap } from './features/AnomalyMap/views/AnomalyMap'
 
 export const App = () => {
   return (
@@ -12,7 +12,7 @@ export const App = () => {
         'text-primary selection:bg-primary/30 uppercase',
       )}
     >
-      <SatelliteView className="fixed size-full" />
+      <AnomalyMap className="fixed size-full" />
 
       <div
         className={clsx(

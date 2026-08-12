@@ -61,7 +61,7 @@ export const ChartSection = ({ shape, className }: ChartSectionProps) => {
     <FadeIn key={areaName}>
       <section className={clsx('grid grid-rows-[auto_1fr]', className)}>
         <DisplayDelay delay={400}>
-          <TypingText text={areaName} className="text-sm" />
+          <TypingText text={areaName} className="text-xs" />
         </DisplayDelay>
 
         <div

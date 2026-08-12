@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
-const DEFAULT_INTERVAL_DELAY = 180
+const DEFAULT_INTERVAL_DELAY = 100
 
 type Props = {
   num: number
@@ -21,12 +21,7 @@ export const CountingUpText = ({
   const [isCompleted, setIsCompleted] = useState(false)
 
   useEffect(() => {
-    // props.textが更新されたら、表示をリセット
-    setCountingUpNumber(0)
-
-    let intervalId: number
-
-    intervalId = setInterval(() => {
+    const intervalId = setInterval(() => {
       setCountingUpNumber((prevNum) => {
         if (prevNum < initialNum) {
           return prevNum + 1
@@ -43,14 +38,14 @@ export const CountingUpText = ({
     return () => {
       clearInterval(intervalId)
     }
-  }, [])
+  }, [initialNum, intervalDelay, onComplete])
 
-  return (
-    <div className={clsx('relative *:whitespace-pre', className)}>
-      <span className={clsx('absolute', className)}>
-        {!isCompleted ? countingUpNumber : initialNum}
-      </span>
-      <span className={clsx('invisible', className)}>{initialNum}</span>
+  return !isCompleted ? (
+    <div className={clsx('relative', className)}>
+      <span className="absolute">{countingUpNumber}</span>
+      <span className="invisible">{initialNum}</span>
     </div>
+  ) : (
+    <span className={className}>{initialNum}</span>
   )
 }

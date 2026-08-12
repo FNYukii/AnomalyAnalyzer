@@ -22,12 +22,9 @@ export const TypingText = ({
 }: Props) => {
   const [typingText, setTypingText] = useState('')
 
-  const [typingCompleted, setTypingCompleted] = useState(false)
+  const [isCompleted, setIsCompleted] = useState(false)
 
   useEffect(() => {
-    // props.textが更新されたら、表示をリセット
-    setTypingText('')
-
     const intervalId = setInterval(() => {
       setTypingText((prevText) => {
         if (prevText.length < initialText.length) {
@@ -35,7 +32,7 @@ export const TypingText = ({
         }
 
         clearInterval(intervalId)
-        setTypingCompleted(true)
+        setIsCompleted(true)
         return prevText
       })
     }, intervalDelay)
@@ -44,15 +41,14 @@ export const TypingText = ({
     return () => {
       clearInterval(intervalId)
     }
-  }, [])
+  }, [initialText, intervalDelay])
 
-  return (
+  return !isCompleted ? (
     <div className={clsx('relative *:whitespace-pre', className)}>
-      <p className={clsx('absolute', className)}>
-        {/* NOTE: アニメーション後は普通にテキスト更新できるように、initialText を表示 */}
-        {!typingCompleted ? typingText : initialText}
-      </p>
-      <p className={clsx('invisible', className)}>{initialText}</p>
+      <p className="absolute">{typingText}</p>
+      <p className="invisible">{initialText}</p>
     </div>
+  ) : (
+    <p className={clsx('whitespace-pre', className)}>{initialText}</p>
   )
 }

@@ -1,34 +1,30 @@
 import { useRef, useEffect } from 'react'
 
+const SPEED = 0.25
+
 type Props = {
   containerRef: React.RefObject<HTMLDivElement | null>
 }
 
 /**
- * @component AutoScroller
- *
- * @description
  * 指定された要素（div等）を自動スクロールさせるコンポーネント
  *
  * 一番下まで到達すれば一番上に戻す,
  * ユーザーによる手動スクロールは無効化される
- *
- * @example
- * <AutoScroller containerRef={containerRef} />
- * <div ref={containerRef} className='overflow-scroll'>
- *  <p>...</p>
- *  <p>......</p>
- *  <p>.........</p>
- * </div>
  */
 export const AutoScroller = ({ containerRef }: Props) => {
-  const scrollRef = useRef<number | null>(null)
+  // アニメーションフレームのIDを管理
+  const animationFrameIdRef = useRef<number | null>(null)
+
+  // 小数点精度を保持する論理スクロール位置を管理
+  const scrollPositionRef = useRef<number>(0)
 
   useEffect(() => {
     const container = containerRef.current
     if (container) {
       container.tabIndex = -1
       container.style.pointerEvents = 'none'
+      scrollPositionRef.current = container.scrollTop
     }
 
     startScroll()
@@ -42,29 +38,32 @@ export const AutoScroller = ({ containerRef }: Props) => {
     const container = containerRef.current
     if (!container) return
 
-    container.scrollTop += 0.25
+    // ref内部で小数点を正しく保持して加算
+    scrollPositionRef.current += SPEED
+    container.scrollTop = scrollPositionRef.current
 
-    // 一番下までスクロールしたら、上に戻す
+    // 一番下までスクロールしたか判定 （1pxの余裕を持たせ誤差吸収）
     if (
-      container.scrollTop + container.clientHeight >=
-      container.scrollHeight
+      Math.ceil(container.scrollTop + container.clientHeight) >=
+      container.scrollHeight - 1
     ) {
+      scrollPositionRef.current = 0
       container.scrollTop = 0
     }
 
     // 次のスクロールも予約
-    scrollRef.current = requestAnimationFrame(scroll)
+    animationFrameIdRef.current = requestAnimationFrame(scroll)
   }
 
   const startScroll = () => {
-    // 次回のフレーム更新で関数を実行するよう予約
-    scrollRef.current = requestAnimationFrame(scroll)
+    animationFrameIdRef.current = requestAnimationFrame(scroll)
   }
 
   const stopScroll = () => {
-    if (scrollRef.current) {
-      cancelAnimationFrame(scrollRef.current)
+    if (animationFrameIdRef.current) {
+      cancelAnimationFrame(animationFrameIdRef.current)
     }
   }
+
   return null
 }

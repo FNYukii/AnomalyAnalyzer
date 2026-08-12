@@ -4,7 +4,7 @@ import { ChartSection } from '../../commonBottomHUD/parts/ChartSection'
 
 export const BottomRightHUD = () => {
   return (
-    <div className={clsx('h-full', 'flex justify-end')}>
+    <div className="flex justify-end">
       <div className={clsx('grid grid-rows-2 grid-cols-3 gap-y-2 gap-x-3')}>
         <DisplayDelay delay={4400}>
           <ChartSection shape="square" className="row-start-1 col-start-3" />

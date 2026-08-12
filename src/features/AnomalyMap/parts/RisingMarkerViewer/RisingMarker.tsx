@@ -6,10 +6,15 @@ const SPEED = 0.25
 
 type Props = {
   xPercentage: number
+  yPercentage: number
   onReachTheTop: () => void
 }
 
-export const RisingMarker = ({ xPercentage, onReachTheTop }: Props) => {
+export const RisingMarker = ({
+  xPercentage,
+  yPercentage,
+  onReachTheTop,
+}: Props) => {
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -17,7 +22,7 @@ export const RisingMarker = ({ xPercentage, onReachTheTop }: Props) => {
     if (!element) return
 
     // 初期位置は画面の最下部 （見切れないよう要素自身の高さを加算）
-    let currentY = window.innerHeight
+    let currentY = window.innerHeight * (1 - yPercentage / 100)
 
     let animationFrameId: number
 
@@ -52,7 +57,7 @@ export const RisingMarker = ({ xPercentage, onReachTheTop }: Props) => {
       )}
       style={{
         left: `${xPercentage}%`,
-        transform: 'translate3d(-50%, 100vh, 0)', // NOTE: 初期は画面外へ押し下げておく
+        transform: `translate3d(-50%, calc((100 - ${yPercentage}) * 1dvh), 0)`, // NOTE: 初期は画面外へ押し下げておく
       }}
     >
       <AnomaryMarker />

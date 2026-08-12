@@ -3,6 +3,7 @@ import { pickRandomItems } from '../../../common/utils/array'
 import { makeTrueByPercentage } from '../../../common/utils/boolean'
 import { makeRandomNum } from '../../../common/utils/number'
 import { MarkerIcon } from '../../elements/MarkerIcon'
+import { FadeIn } from '../../../common/elements/FadeIn'
 
 const ANOMALY_TYPES = [
   'wind',
@@ -51,22 +52,24 @@ export const AnomaryMarker = () => {
   const anomalyTypes = pickRandomItems(ANOMALY_TYPES, anomalyTypeCont)
 
   return (
-    <div className={clsx('flex gap-1', isGreatAnomaly && 'text-accent')}>
-      <MarkerIcon className="size-12" />
+    <FadeIn>
+      <div className={clsx('flex gap-1', isGreatAnomaly && 'text-accent')}>
+        <MarkerIcon className="size-12" />
 
-      <div>
-        <IntegerAndDecimalText value={anomaliumConcentration} />
+        <div>
+          <IntegerAndDecimalText value={anomaliumConcentration} />
 
-        <div className="mt-1 flex gap-1">
-          <div
-            className={clsx(
-              'w-[3px]',
-              isGreatAnomaly ? 'bg-accent' : 'bg-primary',
-            )}
-          />
-          <p className="leading-none">{anomalyTypes.join(', ')}</p>
+          <div className="mt-1 flex gap-1">
+            <div
+              className={clsx(
+                'w-[3px]',
+                isGreatAnomaly ? 'bg-accent' : 'bg-primary',
+              )}
+            />
+            <p className="leading-none">{anomalyTypes.join(', ')}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </FadeIn>
   )
 }

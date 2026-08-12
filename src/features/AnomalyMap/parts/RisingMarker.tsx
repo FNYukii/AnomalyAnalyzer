@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { useEffect, useRef } from 'react'
+import { MarkerIcon } from '../elements/MarkerIcon'
 
 const SPEED = 0.25
 
@@ -44,12 +45,14 @@ export const RisingMarker = ({ xPercentage }: Props) => {
       ref={elementRef}
       className={clsx(
         `fixed top-0`,
-        'size-4 rounded-full bg-primary animate-pulse',
+        // 'size-4 rounded-full bg-primary animate-pulse',
       )}
       style={{
         left: `${xPercentage}%`,
         transform: 'translate3d(-50%, 100vh, 0)', // NOTE: 初期は画面外へ押し下げておく
       }}
-    />
+    >
+      <MarkerIcon className="size-12" />
+    </div>
   )
 }

@@ -1,13 +1,16 @@
-import clsx from 'clsx'
+import { makeRandomNum } from '../../common/utils/number'
+import { RisingMarker } from './RisingMarker'
 
 type Props = {
   className?: string
 }
 
 export const RisingMarkerMap = ({ className }: Props) => {
+  const xPercentage = makeRandomNum(15, 86)
+
   return (
-    <div className={clsx('flex justify-center items-end', className)}>
-      {/* <div className="size-4 rounded-full bg-accent animate-rise" /> */}
+    <div className={className}>
+      <RisingMarker xPercentage={xPercentage} />
     </div>
   )
 }

@@ -14,7 +14,6 @@ const WEATHERS = [
   'sunny',
   'cloudy',
   'rainy',
-  'snowy',
   'windy',
   'foggy',
   'thunderstorm',

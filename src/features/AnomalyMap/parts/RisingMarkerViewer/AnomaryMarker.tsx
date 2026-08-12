@@ -1,4 +1,5 @@
 import { pickRandomItems } from '../../../common/utils/array'
+import { makeTrueByPercentage } from '../../../common/utils/boolean'
 import { makeRandomNum } from '../../../common/utils/number'
 import { MarkerIcon } from '../../elements/MarkerIcon'
 
@@ -19,7 +20,8 @@ const ANOMALY_TYPES = [
 export const AnomaryMarker = () => {
   const anomaliumConcentration = makeRandomNum(10, 401, 2)
 
-  const anomalyTypeCont = makeRandomNum(1, 4)
+  const isMultipleAnomalyType = makeTrueByPercentage(20)
+  const anomalyTypeCont = makeRandomNum(1, !isMultipleAnomalyType ? 1 : 4)
   const anomalyTypes = pickRandomItems(ANOMALY_TYPES, anomalyTypeCont)
 
   return (

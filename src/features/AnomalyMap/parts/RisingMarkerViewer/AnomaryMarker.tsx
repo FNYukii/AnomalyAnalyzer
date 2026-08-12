@@ -70,10 +70,34 @@ export const AnomaryMarker = () => {
   const anomalyTypeCont = makeRandomNum(1, !isGreatAnomaly ? 1 : 4)
   const anomalyTypes = pickRandomItems(ANOMALY_TYPES, anomalyTypeCont)
 
+  const anomalyAreaRadius = !isGreatAnomaly
+    ? makeRandomNum(50, 110)
+    : makeRandomNum(100, 201)
+
+  const MARKER_ICON_HEIGHT = 24
+
   return (
     <FadeIn>
-      <div className={clsx('flex gap-1', isGreatAnomaly && 'text-accent')}>
-        <MarkerIcon className="size-12" />
+      <div
+        className={clsx('flex gap-1', isGreatAnomaly && 'text-accent')}
+        style={{
+          paddingBottom: `${anomalyAreaRadius - MARKER_ICON_HEIGHT}px`,
+        }}
+      >
+        <div className="relative flex items-center justify-center">
+          <MarkerIcon className={`size-${MARKER_ICON_HEIGHT}px`} />
+
+          <div
+            className={clsx(
+              'absolute',
+              'rounded-full border border-current/60 bg-current/10',
+            )}
+            style={{
+              width: `${anomalyAreaRadius * 2}px`,
+              height: `${anomalyAreaRadius * 2}px`,
+            }}
+          />
+        </div>
 
         <div>
           <IntegerAndDecimalText value={anomaliumConcentration} />

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { Slider } from './Slider'
 
 const DEFAULT_INTERVAL_DELAY = 80

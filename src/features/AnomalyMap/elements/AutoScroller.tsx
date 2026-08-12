@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useEffect,useRef } from 'react'
 
 const SPEED = 0.25
 

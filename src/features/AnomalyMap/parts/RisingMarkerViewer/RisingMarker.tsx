@@ -1,5 +1,6 @@
-import clsx from 'clsx'
 import { useEffect, useRef } from 'react'
+import clsx from 'clsx'
+
 import { AnomaryMarker } from './AnomaryMarker'
 
 const SPEED = 0.25

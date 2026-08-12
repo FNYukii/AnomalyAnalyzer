@@ -1,8 +1,9 @@
 import clsx from 'clsx'
+
+import { AnomalyMap } from './features/AnomalyMap/views/AnomalyMap'
+import { BottomHUD } from './features/BottomHUD/views/BottomHUD'
 import { TopLeftHUD } from './features/TopLeftHUD/views/TopLeftHUD'
 import { TopRightHUD } from './features/TopRightHUD/views/TopRightHUD'
-import { BottomHUD } from './features/BottomHUD/views/BottomHUD'
-import { AnomalyMap } from './features/AnomalyMap/views/AnomalyMap'
 
 export const App = () => {
   return (

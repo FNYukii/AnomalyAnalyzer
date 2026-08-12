@@ -1,6 +1,7 @@
 import clsx from 'clsx'
-import { TypingText } from '../../common/elements/TypingText'
+
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
+import { TypingText } from '../../common/elements/TypingText'
 import { makeRandomNum } from '../../common/utils/number'
 
 const INITIALIZE_LOG_TEXT = `AUTH - Observer Authenticated

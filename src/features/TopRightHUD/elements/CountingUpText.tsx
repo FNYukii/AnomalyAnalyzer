@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import { useEffect, useState } from 'react'
+import clsx from 'clsx'
 
 const DEFAULT_INTERVAL_DELAY = 180
 

@@ -6,6 +6,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
+
 import { makeRandomNum } from '../../common/utils/number'
 
 type Record = {

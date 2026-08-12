@@ -1,6 +1,6 @@
+import { useEffect,useState } from 'react'
 import clsx from 'clsx'
-import { useState, useEffect } from 'react'
-import { AREA_TYPES } from '../constants'
+
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
 import { FadeIn } from '../../common/elements/FadeIn'
 import { TypingText } from '../../common/elements/TypingText'
@@ -16,6 +16,7 @@ import {
   ScatterChart,
   TriangleRadarChart,
 } from '../charts'
+import { AREA_TYPES } from '../constants'
 
 const LANDSCAPE_CHART_TYPES = [
   'barWaveform',

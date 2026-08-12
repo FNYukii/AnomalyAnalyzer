@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+
 import { makeRandomNum } from '../../../common/utils/number'
+
 import { RisingMarker } from './RisingMarker'
 
 const makeX = () => {

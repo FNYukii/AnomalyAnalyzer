@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react'
 import {
+  ReferenceLine,
   ResponsiveContainer,
   Scatter,
   ScatterChart as RCScatterChart,
   XAxis,
   YAxis,
   ZAxis,
-  ReferenceLine,
 } from 'recharts'
-import { makeRandomNum } from '../../common/utils/number'
+
 import { makeTrueByPercentage } from '../../common/utils/boolean'
+import { makeRandomNum } from '../../common/utils/number'
 
 type Record = {
   x: number

@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
 import { ChartSection } from '../parts/ChartSection'
 

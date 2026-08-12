@@ -1,5 +1,5 @@
-import { ScrollingSatelliteMap } from '../parts/ScrollingSatelliteMap'
 import { RisingMarkerMap } from '../parts/RisingMarkerViewer/RisingMarkerMap'
+import { ScrollingSatelliteMap } from '../parts/ScrollingSatelliteMap'
 
 type Props = {
   className?: string

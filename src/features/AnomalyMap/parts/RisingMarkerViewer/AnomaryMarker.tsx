@@ -1,13 +1,14 @@
+import { useState } from 'react'
 import clsx from 'clsx'
+
+import { DisplayDelay } from '../../../common/elements/DisplayDelay'
+import { FadeIn } from '../../../common/elements/FadeIn'
+import { TypingText } from '../../../common/elements/TypingText'
 import { pickRandomItems } from '../../../common/utils/array'
 import { makeTrueByPercentage } from '../../../common/utils/boolean'
 import { makeRandomNum } from '../../../common/utils/number'
-import { MarkerIcon } from '../../elements/MarkerIcon'
-import { FadeIn } from '../../../common/elements/FadeIn'
 import { CountingUpText } from '../../../TopRightHUD/elements/CountingUpText'
-import { useState } from 'react'
-import { TypingText } from '../../../common/elements/TypingText'
-import { DisplayDelay } from '../../../common/elements/DisplayDelay'
+import { MarkerIcon } from '../../elements/MarkerIcon'
 
 const ANOMALY_TYPES = [
   'wind',

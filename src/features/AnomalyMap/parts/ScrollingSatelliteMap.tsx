@@ -1,6 +1,7 @@
-import clsx from 'clsx'
-import satellitePhoto from '../assets/satellite-photo.png'
 import { useRef } from 'react'
+import clsx from 'clsx'
+
+import satellitePhoto from '../assets/satellite-photo.png'
 import { AutoScroller } from '../elements/AutoScroller'
 
 export const ScrollingSatelliteMap = () => {

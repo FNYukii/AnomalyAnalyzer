@@ -18,7 +18,26 @@ const WEATHERS = [
   'windy',
   'foggy',
   'thunderstorm',
-]
+] as const
+
+const WIND_DIRECTIONS = [
+  'N',
+  'NNE',
+  'NE',
+  'ENE',
+  'E',
+  'ESE',
+  'SE',
+  'SSE',
+  'S',
+  'SSW',
+  'SW',
+  'WSW',
+  'W',
+  'WNW',
+  'NW',
+  'NNW',
+] as const
 
 const MAX_AREA_LEVEL = 7
 
@@ -50,14 +69,49 @@ const WeatherSection = () => {
   const temperature = makeRandomNum(10, 40, 1)
   const humidity = makeRandomNum(30, 70, 1)
 
+  const airQuality = makeRandomNum(0, 500)
+  const windSpeed = makeRandomNum(0, 31)
+  const uvIndex = makeRandomNum(0, 11)
+  const airPressure = makeRandomNum(900, 1051)
+  const visibility = makeRandomNum(0, 10)
+  const windDirection = pickRandomItem(WIND_DIRECTIONS)
+
   return (
-    <section className="mt-1">
+    <section className={clsx('mt-2', 'flex flex-col items-end')}>
       <DisplayDelay delay={600}>
         <TypingText
           text={`${weather} | ${temperature}℃ | ${humidity}%`}
           className="text-xl"
         />
       </DisplayDelay>
+
+      <div
+        className={clsx('mt-2', 'flex flex-col items-end', '*:leading-[1.4]')}
+      >
+        <DisplayDelay delay={1200}>
+          <TypingText text={`WIND ${windSpeed} m/s`} className="normal-case" />
+        </DisplayDelay>
+
+        <DisplayDelay delay={1300}>
+          <TypingText text={`WDIR ${windDirection}`} />
+        </DisplayDelay>
+
+        <DisplayDelay delay={1400}>
+          <TypingText text={`AQI ${airQuality}`} />
+        </DisplayDelay>
+
+        <DisplayDelay delay={1500}>
+          <TypingText text={`AP ${airPressure} hPa`} className="normal-case" />
+        </DisplayDelay>
+
+        <DisplayDelay delay={1600}>
+          <TypingText text={`VIS ${visibility} km`} className="normal-case" />
+        </DisplayDelay>
+
+        <DisplayDelay delay={1700}>
+          <TypingText text={`UVI ${uvIndex}`} />
+        </DisplayDelay>
+      </div>
     </section>
   )
 }
@@ -91,7 +145,7 @@ const LevelSection = () => {
   return (
     <section className="mt-8 mr-4 flex gap-3">
       <div className="flex flex-col items-end">
-        <DisplayDelay delay={5400}>
+        <DisplayDelay delay={5200}>
           <TypingText
             text={`Alert\nlevel`}
             className={clsx(
@@ -101,7 +155,7 @@ const LevelSection = () => {
           />
         </DisplayDelay>
 
-        <DisplayDelay delay={5800}>
+        <DisplayDelay delay={5400}>
           <CountingUpText
             num={level}
             className={clsx('mt-2 text-6xl h-13', level === 7 && 'text-accent')}
@@ -109,7 +163,7 @@ const LevelSection = () => {
         </DisplayDelay>
       </div>
 
-      <DisplayDelay delay={5800}>
+      <DisplayDelay delay={5400}>
         <CountingUpSlider
           percentage={(level / MAX_AREA_LEVEL) * 100}
           color={level === 7 ? 'accent' : 'primary'}

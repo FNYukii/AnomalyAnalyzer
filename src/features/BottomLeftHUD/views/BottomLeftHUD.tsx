@@ -10,8 +10,9 @@ import { PentagonRadarChart } from '../parts/PentagonRadarChart'
 import { useEffect, useState } from 'react'
 import { makeTrueByPercentage } from '../../misc/utils/boolean'
 import { TypingText } from '../../misc/elements/TypingText'
+import { AreaChart } from '../parts/AreaChart'
 
-const CHART_TYPES = ['barWaveform', 'line', 'pentagonRadar'] as const
+const CHART_TYPES = ['barWaveform', 'line', 'pentagonRadar', 'area'] as const
 
 const makeAreaName = (): string => {
   const areaType = pickRandomItem(AREA_TYPES)
@@ -58,6 +59,7 @@ const ChartSection = ({ className }: ChartSectionProps) => {
           {chartType === 'barWaveform' && <BarWaveformChart />}
           {chartType === 'line' && <LineChart />}
           {chartType === 'pentagonRadar' && <PentagonRadarChart />}
+          {chartType === 'area' && <AreaChart />}
         </div>
       </section>
     </FadeIn>

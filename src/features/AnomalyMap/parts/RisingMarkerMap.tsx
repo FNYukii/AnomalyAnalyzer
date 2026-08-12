@@ -1,16 +1,27 @@
-import { makeRandomNum } from '../../common/utils/number'
-import { RisingMarker } from './RisingMarker'
+import { DisplayDelay } from '../../common/elements/DisplayDelay'
+import { RisingMarkerViewer } from './RisingMarkerViewer'
 
 type Props = {
   className?: string
 }
 
 export const RisingMarkerMap = ({ className }: Props) => {
-  const xPercentage = makeRandomNum(15, 86)
-
   return (
     <div className={className}>
-      <RisingMarker xPercentage={xPercentage} />
+      <RisingMarkerViewer />
+      <RisingMarkerViewer />
+
+      <DisplayDelay delay={10000}>
+        <RisingMarkerViewer />
+      </DisplayDelay>
+
+      <DisplayDelay delay={20000}>
+        <RisingMarkerViewer />
+      </DisplayDelay>
+
+      <DisplayDelay delay={30000}>
+        <RisingMarkerViewer />
+      </DisplayDelay>
     </div>
   )
 }

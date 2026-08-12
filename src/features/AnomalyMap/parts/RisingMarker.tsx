@@ -6,9 +6,10 @@ const SPEED = 0.25
 
 type Props = {
   xPercentage: number
+  onReachTheTop: () => void
 }
 
-export const RisingMarker = ({ xPercentage }: Props) => {
+export const RisingMarker = ({ xPercentage, onReachTheTop }: Props) => {
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -29,6 +30,8 @@ export const RisingMarker = ({ xPercentage }: Props) => {
       const elementHeight = element.offsetHeight
       if (currentY > -elementHeight) {
         animationFrameId = requestAnimationFrame(render)
+      } else {
+        onReachTheTop()
       }
     }
 

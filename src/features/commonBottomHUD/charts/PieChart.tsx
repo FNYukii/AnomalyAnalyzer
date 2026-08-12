@@ -101,7 +101,7 @@ export const PieChart = () => {
 
   return (
     <div className="size-full relative">
-      <ResponsiveContainer className="">
+      <ResponsiveContainer inert={true}>
         <RCPieChart>
           <Pie
             data={data}

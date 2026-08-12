@@ -46,7 +46,7 @@ export const PentagonRadarChart = () => {
   const data = makeStatRecords()
 
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer inert={true}>
       <RCRadarChart data={data} cy="54%">
         <PolarGrid stroke="var(--color-primary)" strokeOpacity={0.6} />
         <PolarAngleAxis

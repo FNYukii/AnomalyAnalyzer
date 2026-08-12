@@ -40,7 +40,7 @@ export const LineChart = () => {
   const data = makeConcentrationRecords()
 
   return (
-    <ResponsiveContainer className="pr-1">
+    <ResponsiveContainer className="pr-1" inert={true}>
       <RCLineChart data={data}>
         <YAxis
           dataKey="concentration"
@@ -63,5 +63,6 @@ export const LineChart = () => {
         />
       </RCLineChart>
     </ResponsiveContainer>
+    // </div>
   )
 }

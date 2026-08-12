@@ -40,7 +40,7 @@ export const AreaChart = () => {
   const data = makeConcentrationRecords()
 
   return (
-    <ResponsiveContainer className="pr-1">
+    <ResponsiveContainer className="pr-1" inert={true}>
       <RCAreaChart data={data}>
         <YAxis
           dataKey="concentration"

@@ -70,7 +70,7 @@ export const ScatterChart = () => {
   }, [])
 
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer inert={true}>
       <RCScatterChart>
         <XAxis
           dataKey="x"

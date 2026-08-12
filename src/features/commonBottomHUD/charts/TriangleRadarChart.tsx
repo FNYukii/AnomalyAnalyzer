@@ -48,7 +48,7 @@ export const TriangleRadarChart = () => {
   }, [])
 
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer inert={true}>
       <RCRadarChart data={data} cy="60%" outerRadius="99%">
         <PolarGrid stroke="var(--color-primary)" strokeOpacity={0.6} />
 

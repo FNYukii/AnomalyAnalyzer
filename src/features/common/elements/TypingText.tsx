@@ -28,9 +28,7 @@ export const TypingText = ({
     // props.textが更新されたら、表示をリセット
     setTypingText('')
 
-    let intervalId: number
-
-    intervalId = setInterval(() => {
+    const intervalId = setInterval(() => {
       setTypingText((prevText) => {
         if (prevText.length < initialText.length) {
           return prevText + initialText[prevText.length]
@@ -49,7 +47,7 @@ export const TypingText = ({
   }, [])
 
   return (
-    <div className="relative *:whitespace-pre">
+    <div className={clsx('relative *:whitespace-pre', className)}>
       <p className={clsx('absolute', className)}>
         {/* NOTE: アニメーション後は普通にテキスト更新できるように、initialText を表示 */}
         {!typingCompleted ? typingText : initialText}

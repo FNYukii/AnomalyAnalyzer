@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useState, useEffect } from 'react'
-import { AREA_TYPES } from '../../common/constants'
+import { AREA_TYPES } from '../constants'
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
 import { FadeIn } from '../../common/elements/FadeIn'
 import { TypingText } from '../../common/elements/TypingText'

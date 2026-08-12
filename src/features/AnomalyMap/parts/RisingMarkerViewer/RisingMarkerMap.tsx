@@ -1,4 +1,4 @@
-import { DisplayDelay } from '../../common/elements/DisplayDelay'
+import { DisplayDelay } from '../../../common/elements/DisplayDelay'
 import { RisingMarkerViewer } from './RisingMarkerViewer'
 
 type Props = {

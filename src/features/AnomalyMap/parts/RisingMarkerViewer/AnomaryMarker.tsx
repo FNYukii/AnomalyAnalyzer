@@ -1,6 +1,6 @@
-import { pickRandomItems } from '../../common/utils/array'
-import { makeRandomNum } from '../../common/utils/number'
-import { MarkerIcon } from '../elements/MarkerIcon'
+import { pickRandomItems } from '../../../common/utils/array'
+import { makeRandomNum } from '../../../common/utils/number'
+import { MarkerIcon } from '../../elements/MarkerIcon'
 
 const ANOMALY_TYPES = [
   'wind',

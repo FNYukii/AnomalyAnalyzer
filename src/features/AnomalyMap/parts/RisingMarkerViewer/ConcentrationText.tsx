@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import clsx from 'clsx'
 
 import { TypingText } from '../../../common/elements/TypingText'
 import { CountingUpText } from '../../../TopRightHUD/elements/CountingUpText'
@@ -20,26 +21,23 @@ export const ConcentrationText = ({ value, greatAnomaly }: Props) => {
   }
 
   return (
-    // NOTE: 濃度テキストはpopupされると領域が広がるので、その際マーカーがずれないよう対策
-    <div className="w-48">
-      <PopUpAndUndo highlightColor={!greatAnomaly ? 'primary' : 'accent'}>
-        <p className="leading-none">
-          <CountingUpText
-            num={Number(integerPart)}
-            intervalDelay={1000 / Number(integerPart)} // 約1秒でカウントアップ完了するように
-            onComplete={handleOnComplete}
-            className="inline-block text-2xl leading-none"
-          />
+    <PopUpAndUndo highlightColor={!greatAnomaly ? 'primary' : 'accent'}>
+      <p className="leading-none">
+        <CountingUpText
+          num={Number(integerPart)}
+          intervalDelay={1000 / Number(integerPart)} // 約1秒でカウントアップ完了するように
+          onComplete={handleOnComplete}
+          className="inline-block text-2xl leading-none"
+        />
 
-          {decimalPart !== undefined && isCountUpCompleted && (
-            <TypingText
-              text={`.${decimalPart}`}
-              intervalDelay={50}
-              className="inline-block"
-            />
-          )}
-        </p>
-      </PopUpAndUndo>
-    </div>
+        {decimalPart !== undefined && (
+          <TypingText
+            text={`.${decimalPart}`}
+            intervalDelay={50}
+            className={clsx('inline-block', !isCountUpCompleted && 'invisible')}
+          />
+        )}
+      </p>
+    </PopUpAndUndo>
   )
 }

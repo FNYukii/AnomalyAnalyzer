@@ -11,7 +11,7 @@ export const PopUpAndUndo = ({ children, highlightColor }: Props) => {
     <div
       className={clsx(
         'inline-block',
-        'animate-[popup_2s,highlight_2s] origin-bottom-left',
+        'animate-[popup_2s,highlight_2s] origin-bottom-left pr-[16px]',
       )}
       style={
         {
@@ -39,14 +39,17 @@ export const PopUpAndUndo = ({ children, highlightColor }: Props) => {
 					}
 					40% {
 						background-color: var(--highlight-color);
-						color: black; padding: 1px 8px;
+						color: black;
+						padding: 0px 8px;
 					}
 					85% {
 						background-color: var(--highlight-color);
-						color: black; padding: 1px 8px;
+						color: black;
+						padding: 0px 8px;
 					}
           100% {
 						background-color: transparent;
+						padding-right: 16px;
 					}
         }
       `}</style>

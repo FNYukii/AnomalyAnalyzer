@@ -42,8 +42,8 @@ export const ChartSection = ({ shape, className }: ChartSectionProps) => {
   const chartTypes =
     shape === 'landscape' ? LANDSCAPE_CHART_TYPES : SQUARE_CHART_TYPES
 
-  const [areaName, setAreaName] = useState(makeAreaName())
-  const [chartType, setChartType] = useState(pickRandomItem(chartTypes))
+  const [areaName, setAreaName] = useState(makeAreaName)
+  const [chartType, setChartType] = useState(() => pickRandomItem(chartTypes))
 
   // 一定間隔ごとに一定確率でグラフを入れ替え
   useEffect(() => {

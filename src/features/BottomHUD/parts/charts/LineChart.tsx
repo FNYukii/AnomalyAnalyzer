@@ -9,13 +9,14 @@ import {
 
 import { makeRandomNum } from '../../../common/utils/number'
 
+const HOUR_OFFSETS = [5, 4, 3, 2, 1, 0]
+
 type Record = {
   hour: number
   concentration: number
 }
 
 const makeConcentrationRecords = (): Record[] => {
-  const HOUR_OFFSETS = [5, 4, 3, 2, 1, 0]
   const records: Record[] = []
 
   HOUR_OFFSETS.forEach((hourOffset) => {

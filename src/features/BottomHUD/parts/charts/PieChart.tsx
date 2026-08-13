@@ -67,7 +67,7 @@ const FourPercentageGrid = ({
  * アノマリーの構成要素の比率をランダム生成し、表示する
  */
 export const PieChart = () => {
-  const [data, setData] = useState(makePercentageRecords())
+  const [data, setData] = useState(makePercentageRecords)
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import clsx from 'clsx'
 
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
@@ -19,9 +20,14 @@ const makeRandom4NumberStr = (): string => {
   return String(randomNum).padStart(4, '0')
 }
 
+const makeSessionId = () =>
+  `${makeRandom4NumberStr()}-${makeRandom4NumberStr()}-${makeRandom4NumberStr()}-${makeRandom4NumberStr()}`
+
+const makeUserId = () => `${makeRandom4NumberStr()}-${makeRandom4NumberStr()}`
+
 export const TopLeftHUD = () => {
-  const sessionId = `${makeRandom4NumberStr()}-${makeRandom4NumberStr()}-${makeRandom4NumberStr()}-${makeRandom4NumberStr()}`
-  const userId = `${makeRandom4NumberStr()}-${makeRandom4NumberStr()}`
+  const [sessionId] = useState(makeSessionId)
+  const [userId] = useState(makeUserId)
 
   return (
     <div>

@@ -39,8 +39,9 @@ const makeCoordinateRecords = (): Record[] => {
  * アノマリーエリアにおける各アノマリーの座標,大きさをランダム生成し、表示する
  */
 export const ScatterChart = () => {
-  const [data, setData] = useState(makeCoordinateRecords())
-  const maxDataLength = makeRandomNum(5, 20)
+  const [data, setData] = useState(makeCoordinateRecords)
+
+  const [maxDataLength] = useState(() => makeRandomNum(5, 20))
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -36,7 +36,7 @@ const makeStatRecords = (): Record[] => {
  * アノマリーの各波長をランダム生成し、表示する
  */
 export const TriangleRadarChart = () => {
-  const [data, setData] = useState(makeStatRecords())
+  const [data, setData] = useState(makeStatRecords)
 
   useEffect(() => {
     const intervalId = setInterval(() => {

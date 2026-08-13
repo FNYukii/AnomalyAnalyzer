@@ -42,7 +42,7 @@ const WIND_DIRECTIONS = [
 const MAX_AREA_LEVEL = 7
 
 const ClockSection = () => {
-  const [now, setNow] = useState(dayjs())
+  const [now, setNow] = useState(dayjs)
 
   // now を毎秒更新
   useEffect(() => {
@@ -65,16 +65,29 @@ const ClockSection = () => {
 }
 
 const WeatherSection = () => {
-  const weather = pickRandomItem(WEATHERS)
-  const temperature = makeRandomNum(10, 40, 1)
-  const humidity = makeRandomNum(30, 70, 1)
+  const [weatherData] = useState(() => ({
+    weather: pickRandomItem(WEATHERS),
+    temperature: makeRandomNum(10, 40, 1),
+    humidity: makeRandomNum(30, 70, 1),
+    airQuality: makeRandomNum(0, 500),
+    windSpeed: makeRandomNum(0, 31),
+    uvIndex: makeRandomNum(0, 11),
+    airPressure: makeRandomNum(900, 1051),
+    visibility: makeRandomNum(0, 10),
+    windDirection: pickRandomItem(WIND_DIRECTIONS),
+  }))
 
-  const airQuality = makeRandomNum(0, 500)
-  const windSpeed = makeRandomNum(0, 31)
-  const uvIndex = makeRandomNum(0, 11)
-  const airPressure = makeRandomNum(900, 1051)
-  const visibility = makeRandomNum(0, 10)
-  const windDirection = pickRandomItem(WIND_DIRECTIONS)
+  const {
+    weather,
+    temperature,
+    humidity,
+    airQuality,
+    windSpeed,
+    uvIndex,
+    airPressure,
+    visibility,
+    windDirection,
+  } = weatherData
 
   return (
     <section className={clsx('mt-2', 'flex flex-col items-end')}>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { makeRandomNum } from '../../../common/utils/number'
 
@@ -21,22 +21,33 @@ const makeY = () => {
 export const RisingMarkerViewer = () => {
   const [markerX, setMarkerX] = useState(makeX)
   const [markerY, setMarkerY] = useState(makeY)
-  const [isViewing, setIsViewing] = useState(true)
+  const [isShowing, setIsShowing] = useState(true)
+
+  const timeoutIdRef = useRef<number | null>(null)
 
   const handleMarkerReachTheTop = () => {
-    setIsViewing(false)
+    setIsShowing(false)
 
     const delay = makeRandomNum(5000, 15001)
-    setTimeout(() => {
+
+    timeoutIdRef.current = setTimeout(() => {
       setMarkerX(makeX())
       setMarkerY(makeY())
 
-      setIsViewing(true)
+      setIsShowing(true)
     }, delay)
   }
 
+  useEffect(() => {
+    return () => {
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current)
+      }
+    }
+  }, [])
+
   return (
-    isViewing && (
+    isShowing && (
       <RisingMarker
         xPercentage={markerX}
         yPercentage={markerY}

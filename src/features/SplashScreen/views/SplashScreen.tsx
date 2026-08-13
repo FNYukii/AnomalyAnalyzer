@@ -16,8 +16,10 @@ export const SplashScreen = ({ className }: Props) => {
         className,
       )}
     >
-      <section className={clsx('pb-20', 'flex flex-col items-center')}>
-        <TypingText text="A.A.M.S." className="text-5xl italic" />
+      <section
+        className={clsx('pb-20', 'flex flex-col items-center', 'italic')}
+      >
+        <TypingText text="A.A.M.S." className="text-5xl" />
 
         <TypingText
           text="The Anomaly Analysis and Monitoring System"

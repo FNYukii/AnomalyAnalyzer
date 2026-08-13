@@ -5,7 +5,7 @@ import { makeRandomNum } from '../../../common/utils/number'
 import { RisingMarker } from './RisingMarker'
 
 const makeX = () => {
-  return makeRandomNum(15, 86)
+  return makeRandomNum(20, 81)
 }
 
 const makeY = () => {

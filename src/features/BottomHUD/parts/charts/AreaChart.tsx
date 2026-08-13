@@ -48,6 +48,8 @@ export const AreaChart = () => {
           stroke="var(--color-primary)"
           fontSize={12}
           width={20}
+          domain={[0, 99]}
+          ticks={[0, 50, 99]}
         />
         <XAxis
           dataKey="hour"

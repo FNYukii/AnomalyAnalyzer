@@ -21,7 +21,7 @@ const makeConcentrationRecords = (): Record[] => {
   HOUR_OFFSETS.forEach((hourOffset) => {
     const hour = dayjs().add(-hourOffset, 'hour').hour()
     const concentration =
-      (records.at(-1)?.concentration ?? 0) + makeRandomNum(1, 15)
+      (records.at(-1)?.concentration ?? 0) + makeRandomNum(1, 20)
 
     records.push({
       hour,
@@ -48,6 +48,8 @@ export const LineChart = () => {
           stroke="var(--color-primary)"
           fontSize={12}
           width={20}
+          domain={[0, 99]}
+          ticks={[0, 50, 99]}
         />
         <XAxis
           dataKey="hour"
@@ -64,6 +66,5 @@ export const LineChart = () => {
         />
       </RCLineChart>
     </ResponsiveContainer>
-    // </div>
   )
 }

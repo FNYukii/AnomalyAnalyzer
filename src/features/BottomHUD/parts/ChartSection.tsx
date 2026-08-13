@@ -57,7 +57,7 @@ export const ChartSection = ({ shape, className }: ChartSectionProps) => {
     return () => {
       clearInterval(intervalId)
     }
-  }, [])
+  }, [chartTypes])
 
   return (
     <FadeIn key={areaName}>

@@ -1,4 +1,4 @@
-import { useEffect,useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 const SPEED = 0.25
 
@@ -19,6 +19,12 @@ export const AutoScroller = ({ containerRef }: Props) => {
   // 小数点精度を保持する論理スクロール位置を管理
   const scrollPositionRef = useRef<number>(0)
 
+  const stopScroll = () => {
+    if (animationFrameIdRef.current) {
+      cancelAnimationFrame(animationFrameIdRef.current)
+    }
+  }
+
   useEffect(() => {
     const container = containerRef.current
     if (container) {
@@ -27,43 +33,33 @@ export const AutoScroller = ({ containerRef }: Props) => {
       scrollPositionRef.current = container.scrollTop
     }
 
-    startScroll()
+    const scroll = () => {
+      const container = containerRef.current
+      if (!container) return
+
+      // ref内部で小数点を正しく保持して加算
+      scrollPositionRef.current += SPEED
+      container.scrollTop = scrollPositionRef.current
+
+      // 一番下までスクロールしたか判定 （1pxの余裕を持たせ誤差吸収）
+      if (
+        Math.ceil(container.scrollTop + container.clientHeight) >=
+        container.scrollHeight - 1
+      ) {
+        scrollPositionRef.current = 0
+        container.scrollTop = 0
+      }
+
+      // 次のスクロールも予約
+      animationFrameIdRef.current = requestAnimationFrame(scroll)
+    }
+
+    animationFrameIdRef.current = requestAnimationFrame(scroll)
 
     return () => {
       stopScroll()
     }
-  }, [])
-
-  const scroll = () => {
-    const container = containerRef.current
-    if (!container) return
-
-    // ref内部で小数点を正しく保持して加算
-    scrollPositionRef.current += SPEED
-    container.scrollTop = scrollPositionRef.current
-
-    // 一番下までスクロールしたか判定 （1pxの余裕を持たせ誤差吸収）
-    if (
-      Math.ceil(container.scrollTop + container.clientHeight) >=
-      container.scrollHeight - 1
-    ) {
-      scrollPositionRef.current = 0
-      container.scrollTop = 0
-    }
-
-    // 次のスクロールも予約
-    animationFrameIdRef.current = requestAnimationFrame(scroll)
-  }
-
-  const startScroll = () => {
-    animationFrameIdRef.current = requestAnimationFrame(scroll)
-  }
-
-  const stopScroll = () => {
-    if (animationFrameIdRef.current) {
-      cancelAnimationFrame(animationFrameIdRef.current)
-    }
-  }
+  }, [containerRef])
 
   return null
 }

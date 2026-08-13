@@ -1,4 +1,4 @@
-import React, { type ReactElement,useEffect, useState } from 'react'
+import React, { type ReactElement, useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 type Props = {
@@ -10,7 +10,14 @@ export const FadeIn = ({ children }: Props) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
+    // 1フレーム後にコンテンツ表示
+    const rendar = () => {
+      setIsVisible(true)
+    }
+
+    const requestId = requestAnimationFrame(rendar)
+
+    return () => cancelAnimationFrame(requestId)
   }, [])
 
   return React.cloneElement(children, {

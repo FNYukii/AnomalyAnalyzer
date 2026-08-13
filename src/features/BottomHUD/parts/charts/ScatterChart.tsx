@@ -68,7 +68,7 @@ export const ScatterChart = () => {
     return () => {
       clearInterval(intervalId)
     }
-  }, [])
+  }, [maxDataLength])
 
   return (
     <ResponsiveContainer inert={true}>

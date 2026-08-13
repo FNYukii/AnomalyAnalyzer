@@ -47,7 +47,7 @@ export const RisingMarker = ({
     return () => {
       cancelAnimationFrame(animationFrameId)
     }
-  }, [])
+  }, [onReachTheTop, yPercentage])
 
   return (
     <div

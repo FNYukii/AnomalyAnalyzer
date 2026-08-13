@@ -1,4 +1,4 @@
-import { type ReactNode,useEffect, useState } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 
 type Props = {
   children: ReactNode
@@ -16,7 +16,7 @@ export const DisplayDelay = ({ children, delay }: Props) => {
     return () => {
       clearTimeout(timeoutId)
     }
-  }, [])
+  }, [delay])
 
   return (
     <>

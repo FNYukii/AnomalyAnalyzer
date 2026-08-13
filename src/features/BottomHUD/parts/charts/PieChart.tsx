@@ -98,7 +98,7 @@ export const PieChart = () => {
     return () => {
       clearInterval(intervalId)
     }
-  }, [])
+  }, [data.length])
 
   return (
     <div className="size-full relative">

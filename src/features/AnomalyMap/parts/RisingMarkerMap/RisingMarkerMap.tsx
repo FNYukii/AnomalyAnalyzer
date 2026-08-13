@@ -13,7 +13,7 @@ export const RisingMarkerMap = ({ className }: Props) => {
         <RisingMarkerViewer />
       </DisplayDelay>
 
-      <DisplayDelay delay={8200}>
+      <DisplayDelay delay={8400}>
         <RisingMarkerViewer />
       </DisplayDelay>
 

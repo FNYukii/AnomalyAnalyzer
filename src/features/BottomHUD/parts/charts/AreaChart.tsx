@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import dayjs from 'dayjs'
 import {
   Area,
@@ -38,7 +39,7 @@ const makeConcentrationRecords = (): Record[] => {
  * 直近6時間のアノマリー濃度をランダム生成し、表示する
  */
 export const AreaChart = () => {
-  const data = makeConcentrationRecords()
+  const [data] = useState(makeConcentrationRecords)
 
   return (
     <ResponsiveContainer className="pr-1" inert={true}>

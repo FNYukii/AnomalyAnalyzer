@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -44,7 +45,7 @@ const makeStatRecords = (): Record[] => {
  * アノマリーの各指標をランダム生成し、表示する
  */
 export const PentagonRadarChart = () => {
-  const data = makeStatRecords()
+  const [data] = useState(makeStatRecords)
 
   return (
     <ResponsiveContainer inert={true}>

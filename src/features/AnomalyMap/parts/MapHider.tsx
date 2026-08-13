@@ -6,7 +6,8 @@ const ROW_COUNT = 6
 
 const INTERVAL_DELAY = 10
 
-const makeNumbers = (count: number): number[] => {
+const makeNumbers = (): number[] => {
+  const count = COL_COUNT * ROW_COUNT
   return [...Array(count)].map((i) => i)
 }
 
@@ -18,7 +19,7 @@ type Props = {
  * 画面上を隠すセルが1つずつ消えていくグリッド
  */
 export const MapHider = ({ className }: Props) => {
-  const [numbers, setNumbers] = useState(makeNumbers(COL_COUNT * ROW_COUNT))
+  const [numbers, setNumbers] = useState(makeNumbers)
 
   useEffect(() => {
     const intervalId = setInterval(() => {

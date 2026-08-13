@@ -64,8 +64,8 @@ const ClockSection = () => {
   )
 }
 
-const WeatherSection = () => {
-  const [weatherData] = useState(() => ({
+const makeWeatherData = () => {
+  return {
     weather: pickRandomItem(WEATHERS),
     temperature: makeRandomNum(10, 40, 1),
     humidity: makeRandomNum(30, 70, 1),
@@ -75,7 +75,11 @@ const WeatherSection = () => {
     airPressure: makeRandomNum(900, 1051),
     visibility: makeRandomNum(0, 10),
     windDirection: pickRandomItem(WIND_DIRECTIONS),
-  }))
+  }
+}
+
+const WeatherSection = () => {
+  const [weatherData] = useState(makeWeatherData)
 
   const {
     weather,
@@ -130,7 +134,7 @@ const WeatherSection = () => {
 }
 
 const LevelSection = () => {
-  const [level, setLevel] = useState(makeRandomNum(1, 5)) // 1 ~ 4
+  const [level, setLevel] = useState(() => makeRandomNum(1, 5)) // 1 ~ 4
 
   // 一定間隔ごとに一定確率で level を 1~2 段階変化させる
   useEffect(() => {

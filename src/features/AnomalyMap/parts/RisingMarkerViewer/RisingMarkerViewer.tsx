@@ -19,8 +19,8 @@ const makeY = () => {
  * - 次マーカー表示までの待機時間はランダムに決める
  */
 export const RisingMarkerViewer = () => {
-  const [markerX, setMarkerX] = useState(makeX())
-  const [markerY, setMarkerY] = useState(makeY())
+  const [markerX, setMarkerX] = useState(makeX)
+  const [markerY, setMarkerY] = useState(makeY)
   const [isViewing, setIsViewing] = useState(true)
 
   const handleMarkerReachTheTop = () => {

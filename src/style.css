@@ -6,14 +6,10 @@
   --color-accent: var(--color-pink-500);
 }
 
-/* ページのスクロール無効化 */
-html {
-  @apply overscroll-none;
-}
-
 body {
   @apply font-['Exo'] bg-black;
 }
+
 /* スクロールバー非表示用クラス */
 .scrollbar-none::-webkit-scrollbar {
   display: none;

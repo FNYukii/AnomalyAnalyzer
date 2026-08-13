@@ -10,6 +10,7 @@ export const SplashScreen = ({ className }: Props) => {
   return (
     <div
       className={clsx(
+        'size-full',
         'bg-black',
         'flex justify-center items-center',
         className,

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
-import { AnomalyMap } from './features/AnomalyMap/views/AnomalyMap'
-import { BottomHUD } from './features/BottomHUD/views/BottomHUD'
 import { SplashScreen } from './features/SplashScreen/views/SplashScreen'
-import { TopLeftHUD } from './features/TopLeftHUD/views/TopLeftHUD'
-import { TopRightHUD } from './features/TopRightHUD/views/TopRightHUD'
+import { MainScreen } from './MainScreen'
 
+/**
+ * ルートコンポーネント
+ *
+ * アプリ全体へのTailwindCSSクラス付与, スプラッシュ画面/本画面 の制御 を担当
+ */
 export const App = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -27,29 +29,7 @@ export const App = () => {
         'text-primary selection:bg-primary/30 uppercase',
       )}
     >
-      {!isLoaded && <SplashScreen className="size-full" />}
-
-      {isLoaded && (
-        <>
-          <AnomalyMap className="fixed size-full" />
-
-          <div
-            className={clsx(
-              'fixed size-full p-2',
-              'grid grid-rows-[auto_1fr] gap-4',
-            )}
-          >
-            <div className="flex justify-between">
-              <TopLeftHUD />
-              <TopRightHUD />
-            </div>
-
-            <div className="flex flex-col justify-end">
-              <BottomHUD />
-            </div>
-          </div>
-        </>
-      )}
+      {!isLoaded ? <SplashScreen /> : <MainScreen />}
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { MapHider } from '../parts/MapHider'
-import { RisingMarkerMap } from '../parts/RisingMarkerViewer/RisingMarkerMap'
+import { RisingMarkerMap } from '../parts/RisingMarkerMap/RisingMarkerMap'
 import { ScrollingSatelliteMap } from '../parts/ScrollingSatelliteMap'
 
 type Props = {

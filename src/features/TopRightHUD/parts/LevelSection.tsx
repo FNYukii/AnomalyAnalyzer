@@ -52,6 +52,7 @@ export const LevelSection = () => {
         <DisplayDelay delay={6000}>
           <CountingUpText
             num={level}
+            duration={(level / 4) * 1000} // NOTE:levelが大きければその分時間かけて表示 (2なら0.5秒、4なら1秒)
             className={clsx('mt-2 text-6xl h-13', level === 7 && 'text-accent')}
           />
         </DisplayDelay>

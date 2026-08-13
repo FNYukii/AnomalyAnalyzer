@@ -25,7 +25,7 @@ export const ConcentrationText = ({ value, greatAnomaly }: Props) => {
       <p className="leading-none">
         <CountingUpText
           num={Number(integerPart)}
-          intervalDelay={1000 / Number(integerPart)} // 約1秒でカウントアップ完了するように
+          duration={1000}
           onComplete={handleOnComplete}
           className="inline-block text-2xl leading-none"
         />

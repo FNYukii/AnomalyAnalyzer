@@ -11,7 +11,7 @@ export const PopUpAndUndo = ({ children, highlightColor }: Props) => {
     <div
       className={clsx(
         'inline-block',
-        'animate-[popup_2s,highlight_2s] origin-bottom-left pr-[16px]',
+        'animate-[popup_1.6s,highlight_1.6s] origin-bottom-left pr-[16px]',
       )}
       style={
         {
@@ -21,7 +21,6 @@ export const PopUpAndUndo = ({ children, highlightColor }: Props) => {
     >
       <style>{`
 				{* 再生時間が1秒なら、0~0.2:等倍, 0.2~0.4:拡大, 0.4~0.8:待機, 0.8~1.0:縮小 *}
-
         @keyframes popup {
 					0% { transform: scale(1); }
 					20% { transform: scale(1); }

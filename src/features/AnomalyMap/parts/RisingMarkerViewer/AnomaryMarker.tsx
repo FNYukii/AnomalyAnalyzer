@@ -94,7 +94,7 @@ export const AnomaryMarker = () => {
             greatAnomaly={isGreatAnomaly}
           />
 
-          <DisplayDelay delay={1200}>
+          <DisplayDelay delay={1800}>
             <div className="mt-1 flex gap-1">
               <div
                 className={clsx(

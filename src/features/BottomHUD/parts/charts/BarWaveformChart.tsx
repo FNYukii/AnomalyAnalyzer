@@ -41,7 +41,7 @@ export const BarWaveformChart = () => {
       makeRandomNum(0.05, 0.2, 2),
     )
 
-    let frameId: number
+    let requestId: number
     let animationOffsetX = 0 // アニメーション用オフセット
 
     // 描画関数
@@ -79,7 +79,7 @@ export const BarWaveformChart = () => {
       }
 
       // 次回の描画を予約
-      frameId = requestAnimationFrame(render)
+      requestId = requestAnimationFrame(render)
     }
 
     // 描画関数実行
@@ -87,7 +87,7 @@ export const BarWaveformChart = () => {
 
     return () => {
       window.removeEventListener('resize', resizeCanvas)
-      cancelAnimationFrame(frameId)
+      cancelAnimationFrame(requestId)
     }
   }, [])
 

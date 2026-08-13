@@ -11,11 +11,11 @@ export const FadeIn = ({ children }: Props) => {
 
   useEffect(() => {
     // 1フレーム後にコンテンツ表示
-    const rendar = () => {
+    const render = () => {
       setIsVisible(true)
     }
 
-    const requestId = requestAnimationFrame(rendar)
+    const requestId = requestAnimationFrame(render)
 
     return () => cancelAnimationFrame(requestId)
   }, [])

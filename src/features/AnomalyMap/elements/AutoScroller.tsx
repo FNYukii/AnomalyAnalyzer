@@ -13,17 +13,8 @@ type Props = {
  * ユーザーによる手動スクロールは無効化される
  */
 export const AutoScroller = ({ containerRef }: Props) => {
-  // アニメーションフレームのIDを管理
-  const animationFrameIdRef = useRef<number | null>(null)
-
   // 小数点精度を保持する論理スクロール位置を管理
   const scrollPositionRef = useRef<number>(0)
-
-  const stopScroll = () => {
-    if (animationFrameIdRef.current) {
-      cancelAnimationFrame(animationFrameIdRef.current)
-    }
-  }
 
   useEffect(() => {
     const container = containerRef.current
@@ -33,7 +24,9 @@ export const AutoScroller = ({ containerRef }: Props) => {
       scrollPositionRef.current = container.scrollTop
     }
 
-    const scroll = () => {
+    let requestId: number
+
+    const render = () => {
       const container = containerRef.current
       if (!container) return
 
@@ -51,13 +44,13 @@ export const AutoScroller = ({ containerRef }: Props) => {
       }
 
       // 次のスクロールも予約
-      animationFrameIdRef.current = requestAnimationFrame(scroll)
+      requestId = requestAnimationFrame(render)
     }
 
-    animationFrameIdRef.current = requestAnimationFrame(scroll)
+    requestId = requestAnimationFrame(render)
 
     return () => {
-      stopScroll()
+      cancelAnimationFrame(requestId)
     }
   }, [containerRef])
 

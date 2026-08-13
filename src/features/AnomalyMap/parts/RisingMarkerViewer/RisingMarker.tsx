@@ -25,7 +25,7 @@ export const RisingMarker = ({
     // 初期位置は画面の最下部 （見切れないよう要素自身の高さを加算）
     let currentY = window.innerHeight * (1 - yPercentage / 100)
 
-    let animationFrameId: number
+    let requestId: number
 
     const render = () => {
       // 毎フレーム 0.25px ずつ上へ移動
@@ -35,17 +35,17 @@ export const RisingMarker = ({
       // 要素の高さを含めて完全に見切れるまで、次の描画を予約
       const elementHeight = element.offsetHeight
       if (currentY > -elementHeight) {
-        animationFrameId = requestAnimationFrame(render)
+        requestId = requestAnimationFrame(render)
       } else {
         onReachTheTop()
       }
     }
 
     // 描画実行
-    animationFrameId = requestAnimationFrame(render)
+    requestId = requestAnimationFrame(render)
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
+      cancelAnimationFrame(requestId)
     }
   }, [onReachTheTop, yPercentage])
 

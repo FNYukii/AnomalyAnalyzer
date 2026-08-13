@@ -89,7 +89,10 @@ export const AnomaryMarker = () => {
         </div>
 
         <div>
-          <ConcentrationText value={anomaliumConcentration} />
+          <ConcentrationText
+            value={anomaliumConcentration}
+            greatAnomaly={isGreatAnomaly}
+          />
 
           <DisplayDelay delay={1200}>
             <div className="mt-1 flex gap-1">

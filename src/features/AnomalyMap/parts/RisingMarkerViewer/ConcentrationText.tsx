@@ -3,8 +3,7 @@ import clsx from 'clsx'
 
 import { TypingText } from '../../../common/elements/TypingText'
 import { CountingUpText } from '../../../TopRightHUD/elements/CountingUpText'
-
-import { PopUpAndUndo } from './PopUpAndUndo'
+import { PopUpAndUndo } from '../../elements/PopUpAndUndo'
 
 type Props = {
   value: number

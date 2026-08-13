@@ -55,7 +55,7 @@ const makeAnomalyData = () => {
  * - アノマリウム濃度, アノマリータイプ をランダム生成し、表示する
  * - 一定濃度以上なら、アクセントカラーで表示
  */
-export const AnomaryMarker = () => {
+export const Marker = () => {
   const [anomalyData] = useState(makeAnomalyData)
 
   const {
@@ -91,7 +91,7 @@ export const AnomaryMarker = () => {
         <div>
           <ConcentrationText
             value={anomaliumConcentration}
-            greatAnomaly={isGreatAnomaly}
+            highlightColor={!isGreatAnomaly ? 'primary' : 'accent'}
           />
 
           <DisplayDelay delay={1800}>

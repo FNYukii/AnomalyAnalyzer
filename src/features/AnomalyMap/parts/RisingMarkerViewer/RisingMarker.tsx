@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import clsx from 'clsx'
 
-import { AnomaryMarker } from './AnomaryMarker'
+import { Marker } from './Marker'
 
 const SPEED = 0.25
 
@@ -61,7 +61,7 @@ export const RisingMarker = ({
         transform: `translate3d(-50%, calc((100 - ${yPercentage}) * 1dvh), 0)`, // NOTE: 初期は画面外へ押し下げておく
       }}
     >
-      <AnomaryMarker />
+      <Marker />
     </div>
   )
 }

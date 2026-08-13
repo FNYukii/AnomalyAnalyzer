@@ -7,10 +7,10 @@ import { PopUpAndUndo } from '../../elements/PopUpAndUndo'
 
 type Props = {
   value: number
-  greatAnomaly: boolean
+  highlightColor: 'primary' | 'accent'
 }
 
-export const ConcentrationText = ({ value, greatAnomaly }: Props) => {
+export const ConcentrationText = ({ value, highlightColor }: Props) => {
   const [integerPart, decimalPart] = value.toString().split('.')
 
   const [isCountUpCompleted, setIsCountUpCompleted] = useState(false)
@@ -20,7 +20,7 @@ export const ConcentrationText = ({ value, greatAnomaly }: Props) => {
   }
 
   return (
-    <PopUpAndUndo highlightColor={!greatAnomaly ? 'primary' : 'accent'}>
+    <PopUpAndUndo highlightColor={highlightColor}>
       <p className="leading-none">
         <CountingUpText
           num={Number(integerPart)}

@@ -16,24 +16,24 @@ type Record = {
 const makeStatRecords = (): Record[] => {
   return [
     {
-      name: 'RNG',
+      name: 'P',
       value: makeRandomNum(0, 101),
     },
     {
-      name: 'LVL',
+      name: 'S',
       value: makeRandomNum(0, 101),
     },
     {
-      name: 'POP',
+      name: 'M',
       value: makeRandomNum(0, 101),
     },
   ]
 }
 
 /**
- * レーダーチャート
+ * 三角形レーダーチャート
  *
- * アノマリーの統計情報をランダム生成し、表示する
+ * アノマリーの各波長をランダム生成し、表示する
  */
 export const TriangleRadarChart = () => {
   const [data, setData] = useState(makeStatRecords())

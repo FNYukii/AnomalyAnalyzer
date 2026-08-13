@@ -39,9 +39,9 @@ const makeStatRecords = (): Record[] => {
 }
 
 /**
- * レーダーチャート
+ * 五角形レーダーチャート
  *
- * アノマリーの統計情報をランダム生成し、表示する
+ * アノマリーの各指標をランダム生成し、表示する
  */
 export const PentagonRadarChart = () => {
   const data = makeStatRecords()

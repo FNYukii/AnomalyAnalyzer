@@ -68,7 +68,7 @@ export const Marker = () => {
   return (
     <FadeIn>
       <div
-        className={clsx('flex gap-1', isGreatAnomaly && 'text-accent')}
+        className={clsx('flex gap-2', isGreatAnomaly && 'text-accent')}
         style={{
           paddingBottom: `${anomalyAreaRadius - MARKER_ICON_HEIGHT}px`,
         }}

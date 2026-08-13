@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { makeRandomNum } from '../../../common/utils/number'
 
@@ -13,31 +13,20 @@ const makeY = () => {
 }
 
 /**
- * 画面下から上へ動くマーカーを、ランダムなx座標で表示する
+ * 画面上端へ動くマーカーを、ランダムなx, y座標で表示する
  *
  * - 表示していたマーカーが上へ到達したら、次のマーカーを表示する
- * - 開始時間や次マーカー表示までの待機時間はランダムに決める
+ * - 次マーカー表示までの待機時間はランダムに決める
  */
 export const RisingMarkerViewer = () => {
   const [markerX, setMarkerX] = useState(makeX())
   const [markerY, setMarkerY] = useState(makeY())
-  const [isViewing, setIsViewing] = useState(false)
-
-  useEffect(() => {
-    const delay = makeRandomNum(0, 10001)
-    const timeoutId = setTimeout(() => {
-      setIsViewing(true)
-    }, delay)
-
-    return () => {
-      clearTimeout(timeoutId)
-    }
-  }, [])
+  const [isViewing, setIsViewing] = useState(true)
 
   const handleMarkerReachTheTop = () => {
     setIsViewing(false)
 
-    const delay = makeRandomNum(5000, 100001)
+    const delay = makeRandomNum(5000, 15001)
     setTimeout(() => {
       setMarkerX(makeX())
       setMarkerY(makeY())

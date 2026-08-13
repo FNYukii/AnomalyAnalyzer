@@ -9,10 +9,15 @@ type Props = {
 export const RisingMarkerMap = ({ className }: Props) => {
   return (
     <div className={className}>
-      <RisingMarkerViewer />
-      <RisingMarkerViewer />
+      <DisplayDelay delay={6400}>
+        <RisingMarkerViewer />
+      </DisplayDelay>
 
-      <DisplayDelay delay={10000}>
+      <DisplayDelay delay={6800}>
+        <RisingMarkerViewer />
+      </DisplayDelay>
+
+      <DisplayDelay delay={15000}>
         <RisingMarkerViewer />
       </DisplayDelay>
 
@@ -20,7 +25,7 @@ export const RisingMarkerMap = ({ className }: Props) => {
         <RisingMarkerViewer />
       </DisplayDelay>
 
-      <DisplayDelay delay={30000}>
+      <DisplayDelay delay={40000}>
         <RisingMarkerViewer />
       </DisplayDelay>
     </div>

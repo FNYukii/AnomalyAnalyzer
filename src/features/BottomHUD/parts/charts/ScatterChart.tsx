@@ -9,8 +9,8 @@ import {
   ZAxis,
 } from 'recharts'
 
-import { makeTrueByPercentage } from '../../common/utils/boolean'
-import { makeRandomNum } from '../../common/utils/number'
+import { makeTrueByPercentage } from '../../../common/utils/boolean'
+import { makeRandomNum } from '../../../common/utils/number'
 
 type Record = {
   x: number

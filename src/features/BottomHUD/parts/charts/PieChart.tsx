@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import { Pie,PieChart as RCPieChart, ResponsiveContainer } from 'recharts'
+import { Pie, PieChart as RCPieChart, ResponsiveContainer } from 'recharts'
 
-import { makeRandomNum } from '../../common/utils/number'
-import { convertToPercentages } from '../utils/number'
+import { makeRandomNum } from '../../../common/utils/number'
+import { convertToPercentages } from '../../utils/number'
 
 type Record = {
   name: string

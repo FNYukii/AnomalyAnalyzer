@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
@@ -7,6 +7,8 @@ import { TypingText } from '../../common/elements/TypingText'
 import { pickRandomItem } from '../../common/utils/array'
 import { makeTrueByPercentage } from '../../common/utils/boolean'
 import { makeRandomNum } from '../../common/utils/number'
+import { AREA_TYPES } from '../constants'
+
 import {
   AreaChart,
   BarWaveformChart,
@@ -15,8 +17,7 @@ import {
   PieChart,
   ScatterChart,
   TriangleRadarChart,
-} from '../charts'
-import { AREA_TYPES } from '../constants'
+} from './charts'
 
 const LANDSCAPE_CHART_TYPES = [
   'barWaveform',

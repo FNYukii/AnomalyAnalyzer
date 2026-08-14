@@ -18,7 +18,7 @@ export const ScrollingSatelliteMap = () => {
         <img
           src={satellitePhoto}
           alt="衛星写真"
-          className={clsx('w-full', 'brightness-30')}
+          className={clsx('w-full', 'brightness-30 select-none')}
         />
       </div>
     </>

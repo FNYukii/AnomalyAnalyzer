@@ -89,12 +89,14 @@ export const Marker = () => {
         </div>
 
         <div>
-          <ConcentrationText
-            value={anomaliumConcentration}
-            highlightColor={!isGreatAnomaly ? 'primary' : 'accent'}
-          />
+          <DisplayDelay delay={200}>
+            <ConcentrationText
+              value={anomaliumConcentration}
+              highlightColor={!isGreatAnomaly ? 'primary' : 'accent'}
+            />
+          </DisplayDelay>
 
-          <DisplayDelay delay={1800}>
+          <DisplayDelay delay={2000}>
             <div className="mt-1 flex gap-1">
               <div
                 className={clsx(

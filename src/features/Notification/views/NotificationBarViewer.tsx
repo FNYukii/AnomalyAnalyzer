@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { makeRandomNum } from '../../common/utils/number'
+import { Blink } from '../elements/Blink'
 import { NotificationBar } from '../parts/NotificationBar'
 
 const VISIBLE_MS = 5000
@@ -21,5 +22,11 @@ export const NotificationBarViewer = () => {
     }
   }, [isShow])
 
-  return isShow ? <NotificationBar /> : null
+  return (
+    isShow && (
+      <Blink>
+        <NotificationBar />
+      </Blink>
+    )
+  )
 }

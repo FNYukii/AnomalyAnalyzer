@@ -14,7 +14,7 @@ export const MainScreen = () => {
       <div
         className={clsx(
           'fixed size-full',
-          'flex justify-center items-start pt-16',
+          'flex justify-center items-start pt-24',
         )}
       >
         <NotificationBarViewer />

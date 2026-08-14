@@ -7,9 +7,9 @@ import { makeRandomNum } from '../../common/utils/number'
 
 const INITIALIZE_LOG_TEXT = `AUTH - Observer Authenticated
 SYS - A.A.M.S. v4.46.401 Loaded
-INIT - Anomaly Tracker ENABLED
-INIT - Satellite Monitoring ACTIVATED
-INIT - Anomalium Concentrarion Measurement ACTIVATED
+INIT - Anomalium Concentrarion Measurement Activated
+INIT - Anomaly Tracker Enabled
+INIT - Satellite Monitoring Activated
 MODE - Real-time Mapping ON
 MODE - Real-time Chart ON
 MODE - Search Mode SELECTED

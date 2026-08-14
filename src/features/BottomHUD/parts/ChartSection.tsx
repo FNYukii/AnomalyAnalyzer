@@ -4,10 +4,9 @@ import clsx from 'clsx'
 import { DisplayDelay } from '../../common/elements/DisplayDelay'
 import { FadeIn } from '../../common/elements/FadeIn'
 import { TypingText } from '../../common/elements/TypingText'
+import { makeAreaName } from '../../common/utils/areaName'
 import { pickRandomItem } from '../../common/utils/array'
 import { makeTrueByPercentage } from '../../common/utils/boolean'
-import { makeRandomNum } from '../../common/utils/number'
-import { AREA_TYPES } from '../constants'
 
 import {
   AreaChart,
@@ -26,12 +25,6 @@ const LANDSCAPE_CHART_TYPES = [
   'area',
 ] as const
 const SQUARE_CHART_TYPES = ['pie', 'scatter', 'triangleRadar'] as const
-
-const makeAreaName = (): string => {
-  const areaType = pickRandomItem(AREA_TYPES)
-  const areaNumber = makeRandomNum(1, 100)
-  return `${areaType} ${areaNumber}`
-}
 
 type ChartSectionProps = {
   shape: 'landscape' | 'square'

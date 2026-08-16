@@ -26,7 +26,8 @@ export const NotificationBar = () => {
       className={clsx(
         'py-3 px-8',
         'text-2xl',
-        'border border-primary/50 bg-primary/15',
+        'bg-primary/15',
+        'border border-primary/50',
         'corner-border corner-border-primary',
       )}
     >

@@ -62,7 +62,8 @@ export const ChartSection = ({ shape, className }: ChartSectionProps) => {
         <div
           className={clsx(
             shape === 'landscape' ? 'aspect-video' : 'aspect-square',
-            'border border-primary/50 bg-primary/15',
+            'bg-primary/15',
+            'border border-primary/50',
             'corner-border corner-border-primary',
           )}
         >

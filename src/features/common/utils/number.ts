@@ -8,7 +8,7 @@
 export const makeRandomNum = (
   min: number,
   max: number,
-  decimals?: 0 | 1 | 2,
+  decimals: 0 | 1 | 2 = 0,
 ) => {
   const randomNum = Math.random() * (max - min) + min
 
